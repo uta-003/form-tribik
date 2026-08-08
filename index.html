@@ -37,7 +37,7 @@
                             300: '#fda4af',
                             400: '#fb7185',
                             500: '#f43f5e',
-                            600: '#e11d48', /* Primary Modern Crimson Brand */
+                            600: '#e11d48',
                             700: '#be123c',
                             800: '#9f1239',
                             900: '#881337',
@@ -143,7 +143,6 @@
             box-shadow: 0 0 20px rgba(225, 29, 72, 0.3);
         }
 
-        /* Bento Grid Interactive Highlight Classes */
         .cat-card-inactive {
             opacity: 1;
             filter: grayscale(100%);
@@ -166,69 +165,26 @@
             box-shadow: 0 0 35px -2px rgba(225, 29, 72, 0.55) !important;
             background: linear-gradient(135deg, rgba(136, 19, 55, 0.85) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: cardPulse 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .cat-card-active .cat-icon-bg { background-color: rgba(225, 29, 72, 0.35) !important; color: #fb7185 !important; }
+        .cat-card-active .cat-badge { background-color: rgba(225, 29, 72, 0.3) !important; color: #fda4af !important; border-color: rgba(225, 29, 72, 0.5) !important; }
+        .cat-card-active .cat-title { color: #ffffff !important; }
+        .cat-card-active .cat-desc { color: #e2e8f0 !important; }
 
-        .cat-card-active .cat-icon-bg {
-            background-color: rgba(225, 29, 72, 0.35) !important;
-            color: #fb7185 !important;
-        }
-        .cat-card-active .cat-badge {
-            background-color: rgba(225, 29, 72, 0.3) !important;
-            color: #fda4af !important;
-            border-color: rgba(225, 29, 72, 0.5) !important;
-        }
-        .cat-card-active .cat-title {
-            color: #ffffff !important;
-        }
-        .cat-card-active .cat-desc {
-            color: #e2e8f0 !important;
-        }
-
-        .cat-card-inactive .cat-icon-bg {
-            background-color: rgba(255, 255, 255, 0.08) !important;
-            color: #94a3b8 !important;
-        }
-        .cat-card-inactive .cat-badge {
-            background-color: rgba(255, 255, 255, 0.06) !important;
-            color: #94a3b8 !important;
-            border-color: rgba(255, 255, 255, 0.12) !important;
-        }
-        .cat-card-inactive .cat-title {
-            color: #e2e8f0 !important;
-        }
-        .cat-card-inactive .cat-desc {
-            color: #94a3b8 !important;
-        }
-
-        @keyframes cardPulse {
-            0% { transform: scale(0.96); }
-            50% { transform: scale(1.04); }
-            100% { transform: scale(1.02); }
-        }
+        .cat-card-inactive .cat-icon-bg { background-color: rgba(255, 255, 255, 0.08) !important; color: #94a3b8 !important; }
+        .cat-card-inactive .cat-badge { background-color: rgba(255, 255, 255, 0.06) !important; color: #94a3b8 !important; border-color: rgba(255, 255, 255, 0.12) !important; }
+        .cat-card-inactive .cat-title { color: #e2e8f0 !important; }
+        .cat-card-inactive .cat-desc { color: #94a3b8 !important; }
 
         .form-section-animate {
             animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
         @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: translateY(12px) scale(0.98);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
-
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-tribik-600 selection:text-white">
@@ -303,7 +259,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
 
-        <!-- Page Title & Navigation Sub-bar (Bento Header) -->
+        <!-- Page Title & Navigation Sub-bar -->
         <div class="mb-6 sm:mb-8 glass-card p-5 sm:p-8 rounded-3xl shadow-glass border border-slate-700/70 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 relative overflow-hidden">
             <div class="absolute -top-24 -left-24 w-72 h-72 bg-tribik-600/15 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
@@ -318,7 +274,7 @@
                 </p>
             </div>
 
-            <!-- Nav Tabs Switcher Responsive Container -->
+            <!-- Nav Tabs Switcher -->
             <div class="w-full sm:w-auto overflow-x-auto hide-scrollbar relative z-10 pb-0.5 sm:pb-0">
                 <div class="flex items-center gap-1.5 min-w-max bg-slate-900/90 p-1.5 rounded-2xl border border-slate-700/70 text-xs sm:text-sm">
                     <button id="tabBtnForm" onclick="switchTab('form')" class="px-4 sm:px-5 py-2.5 rounded-xl font-bold transition-all duration-200 shadow-glow-red bg-tribik-600 text-white border border-tribik-500/50 whitespace-nowrap min-h-[44px]">
@@ -339,7 +295,6 @@
 
             <!-- Category Selector Buttons (Bento Grid) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-                <!-- Bento Card 1: Cek Unit -->
                 <div onclick="selectCategory('cek_unit')" id="catCardCekUnit" class="cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border-2 border-tribik-600 cat-card-active transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]">
                     <div>
                         <div class="cat-icon-bg absolute top-2 right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-tribik-600/20 rounded-bl-full flex items-top justify-end p-2.5 sm:p-3 text-tribik-400 transition-transform group-hover:scale-110">
@@ -347,11 +302,10 @@
                         </div>
                         <span class="cat-badge text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-tribik-400 bg-tribik-600/20 px-2.5 py-0.5 sm:py-1 rounded-lg border border-tribik-600/30 inline-block">Kategori 1</span>
                         <h3 class="cat-title font-extrabold text-lg sm:text-xl text-white mt-3 sm:mt-4">1. Form Cek Unit Lelang</h3>
-                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Pengajuan inspeksi kelayakan & kondisi fisik kendaraan unit lelang mobil.</p>
+                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Pengajuan inspeksi kelayakan & kondisi fisik multi kendaraan unit lelang.</p>
                     </div>
                 </div>
 
-                <!-- Bento Card 2: Pengambilan Barang -->
                 <div onclick="selectCategory('pengambilan_barang')" id="catCardBarang" class="cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border border-slate-700 cat-card-inactive transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]">
                     <div>
                         <div class="cat-icon-bg absolute top-2 right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-slate-800/40 rounded-bl-full flex items-top justify-end p-2.5 sm:p-3 text-slate-400 transition-transform group-hover:scale-110">
@@ -363,7 +317,6 @@
                     </div>
                 </div>
 
-                <!-- Bento Card 3: Pengambilan Unit -->
                 <div onclick="selectCategory('pengambilan_unit')" id="catCardUnit" class="cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border border-slate-700 cat-card-inactive transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]">
                     <div>
                         <div class="cat-icon-bg absolute top-2 right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-slate-800/40 rounded-bl-full flex items-top justify-end p-2.5 sm:p-3 text-slate-400 transition-transform group-hover:scale-110">
@@ -371,7 +324,7 @@
                         </div>
                         <span class="cat-badge text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-300 bg-slate-900 px-2.5 py-0.5 sm:py-1 rounded-lg border border-slate-700 inline-block">Kategori 3</span>
                         <h3 class="cat-title font-extrabold text-lg sm:text-xl text-white mt-3 sm:mt-4">3. Form Pengambilan Unit</h3>
-                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Serah terima pengeluaran unit mobil lelang dari pool penyimpanan Tribik.</p>
+                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Serah terima pengeluaran multi unit mobil lelang dari pool penyimpanan Tribik.</p>
                     </div>
                 </div>
             </div>
@@ -400,11 +353,11 @@
                     <!-- DYNAMIC CATEGORY FORMS -->
                     <div id="dynamicFormContainer">
 
-                        <!-- FORM 1: CEK UNIT -->
+                        <!-- FORM 1: CEK UNIT (MULTI NOPOL) -->
                         <div id="fieldsCekUnit" class="space-y-5 sm:space-y-6 form-section-animate">
                             <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
                                 <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">1</span>
-                                Parameter Data Form Cek Unit Lelang Mobil
+                                Data Pemohon & Daftar Unit Kendaraan
                             </h4>
 
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -432,30 +385,14 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label for="cekNoPolisi" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nomor Polisi <span class="text-tribik-400">*</span></label>
-                                    <div class="relative">
-                                        <i class="fa-solid fa-car absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekNoPolisi" placeholder="Contoh: B 9812 TBK" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-bold uppercase tracking-wider text-tribik-400 min-h-[44px]">
-                                    </div>
-                                </div>
-
-                                <div class="md:col-span-2">
-                                    <label for="cekNokaNosin" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Noka / Nosin (Nomor Rangka & Nomor Mesin) <span class="text-tribik-400">*</span></label>
-                                    <div class="relative">
-                                        <i class="fa-solid fa-barcode absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekNokaNosin" placeholder="Contoh: MHKS123456 / 2TR-7891011" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
-                                    </div>
-                                </div>
-
                                 <!-- Upload Foto KTP / ID Card -->
-                                <div>
+                                <div class="md:col-span-3">
                                     <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Foto KTP / ID Card <span class="text-tribik-400">*</span></label>
-                                    <div class="relative">
+                                    <div class="relative max-w-md">
                                         <input type="file" id="cekKtpFile" accept="image/*" onchange="handleKtpUpload(this, 'cekKtpPreview', 'cekKtpData', 'cekKtpFilename')" class="hidden">
                                         <label for="cekKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-3.5 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500 min-h-[44px]">
-                                            <span id="cekKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
-                                            <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih</span>
+                                            <span id="cekKtpFilename" class="truncate max-w-[240px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
+                                            <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih File</span>
                                         </label>
                                         <input type="hidden" id="cekKtpData" value="">
                                     </div>
@@ -466,6 +403,47 @@
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Dynamic Units Table for Cek Unit -->
+                            <div class="bg-slate-900/70 p-4 sm:p-6 rounded-2xl border border-slate-700/70 space-y-4">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <label class="block text-xs font-extrabold text-white uppercase tracking-wider">
+                                        <i class="fa-solid fa-car mr-2 text-tribik-400"></i> Daftar Unit Kendaraan (No. Polisi & Noka/Nosin)
+                                    </label>
+                                    <span class="text-[10px] sm:text-[11px] text-slate-400">Anda dapat menambah lebih dari 1 unit kendaraan</span>
+                                </div>
+
+                                <div class="overflow-x-auto border border-slate-700/80 rounded-2xl bg-slate-950/80">
+                                    <table class="w-full text-left text-sm min-w-[500px]" id="cekUnitTable">
+                                        <thead class="bg-slate-900/90 text-slate-300 text-[11px] uppercase font-extrabold border-b border-slate-800">
+                                            <tr>
+                                                <th class="p-3">Nomor Polisi</th>
+                                                <th class="p-3">Noka / Nosin (No. Rangka & Mesin)</th>
+                                                <th class="p-3 w-14 text-center">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="cekUnitTableBody">
+                                            <tr class="border-b border-slate-800/60">
+                                                <td class="p-2">
+                                                    <input type="text" class="cek-nopol w-full p-2.5 glass-input rounded-lg text-xs font-bold uppercase tracking-wider text-tribik-400" placeholder="B 9812 TBK">
+                                                </td>
+                                                <td class="p-2">
+                                                    <input type="text" class="cek-noka w-full p-2.5 glass-input rounded-lg text-xs font-mono" placeholder="MHKS123456 / Mesin: 2TR">
+                                                </td>
+                                                <td class="p-2 text-center">
+                                                    <button type="button" onclick="removeUnitRow(this, 'cekUnitTableBody')" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition min-h-[38px] min-w-[38px]" title="Hapus Baris">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button type="button" onclick="addUnitRow('cekUnitTableBody', 'cek')" class="px-4 sm:px-5 py-2.5 bg-slate-900 hover:bg-tribik-900/50 text-tribik-300 font-bold text-xs rounded-xl border border-tribik-500/50 transition shadow-sm inline-flex items-center gap-2 transform active:scale-95 min-h-[44px]">
+                                    <i class="fa-solid fa-plus-circle text-sm"></i> Tambah Nopol Kendaraan
+                                </button>
                             </div>
                         </div>
 
@@ -507,7 +485,7 @@
                                     <div class="relative">
                                         <input type="file" id="barangKtpFile" accept="image/*" onchange="handleKtpUpload(this, 'barangKtpPreview', 'barangKtpData', 'barangKtpFilename')" class="hidden">
                                         <label for="barangKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-3.5 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500 min-h-[44px]">
-                                            <span id="barangKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
+                                            <span id="barangKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload KTP...</span>
                                             <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih</span>
                                         </label>
                                         <input type="hidden" id="barangKtpData" value="">
@@ -530,7 +508,6 @@
                                     <span class="text-[10px] sm:text-[11px] text-slate-400">Tambah/hapus baris barang sesuai kebutuhan</span>
                                 </div>
 
-                                <!-- Dynamic Items Table -->
                                 <div class="overflow-x-auto border border-slate-700/80 rounded-2xl bg-slate-950/80">
                                     <table class="w-full text-left text-sm min-w-[500px]" id="itemsTable">
                                         <thead class="bg-slate-900/90 text-slate-300 text-[11px] uppercase font-extrabold border-b border-slate-800">
@@ -551,7 +528,7 @@
                                                     <input type="text" class="item-qty w-full p-2.5 glass-input rounded-lg text-xs" placeholder="1" value="1">
                                                 </td>
                                                 <td class="p-2">
-                                                    <input type="text" class="item-unit w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Pcs / Set / Unit" value="Pcs">
+                                                    <input type="text" class="item-unit w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Pcs / Set" value="Pcs">
                                                 </td>
                                                 <td class="p-2">
                                                     <input type="text" class="item-note w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Atribut pendukung unit lelang">
@@ -577,11 +554,11 @@
                             </div>
                         </div>
 
-                        <!-- FORM 3: PENGAMBILAN UNIT -->
+                        <!-- FORM 3: PENGAMBILAN UNIT (MULTI NOPOL) -->
                         <div id="fieldsPengambilanUnit" class="hidden space-y-5 sm:space-y-6">
                             <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
                                 <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">1</span>
-                                Parameter Data Form Pengambilan Unit Lelang Mobil
+                                Data Pemohon & Daftar Pengambilan Unit Kendaraan
                             </h4>
 
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -609,30 +586,14 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label for="unitNoPolisi" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nomor Polisi <span class="text-tribik-400">*</span></label>
-                                    <div class="relative">
-                                        <i class="fa-solid fa-car absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitNoPolisi" placeholder="Contoh: B 7788 TRB" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-bold uppercase tracking-wider text-tribik-400 min-h-[44px]">
-                                    </div>
-                                </div>
-
-                                <div class="md:col-span-2">
-                                    <label for="unitNokaNosin" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Noka / Nosin (Nomor Rangka & Nomor Mesin) <span class="text-tribik-400">*</span></label>
-                                    <div class="relative">
-                                        <i class="fa-solid fa-barcode absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitNokaNosin" placeholder="Contoh: MHKS889910 / 1NR-554432" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
-                                    </div>
-                                </div>
-
                                 <!-- Upload Foto KTP / ID Card -->
-                                <div>
+                                <div class="md:col-span-3">
                                     <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Foto KTP / ID Card <span class="text-tribik-400">*</span></label>
-                                    <div class="relative">
+                                    <div class="relative max-w-md">
                                         <input type="file" id="unitKtpFile" accept="image/*" onchange="handleKtpUpload(this, 'unitKtpPreview', 'unitKtpData', 'unitKtpFilename')" class="hidden">
                                         <label for="unitKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-3.5 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500 min-h-[44px]">
-                                            <span id="unitKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
-                                            <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih</span>
+                                            <span id="unitKtpFilename" class="truncate max-w-[240px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload KTP...</span>
+                                            <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih File</span>
                                         </label>
                                         <input type="hidden" id="unitKtpData" value="">
                                     </div>
@@ -644,11 +605,52 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Dynamic Units Table for Pengambilan Unit -->
+                            <div class="bg-slate-900/70 p-4 sm:p-6 rounded-2xl border border-slate-700/70 space-y-4">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <label class="block text-xs font-extrabold text-white uppercase tracking-wider">
+                                        <i class="fa-solid fa-car-side mr-2 text-tribik-400"></i> Daftar Unit Kendaraan yang Dikeluarkan (No. Polisi & Noka/Nosin)
+                                    </label>
+                                    <span class="text-[10px] sm:text-[11px] text-slate-400">Tambah/hapus baris kendaraan sesuai kebutuhan</span>
+                                </div>
+
+                                <div class="overflow-x-auto border border-slate-700/80 rounded-2xl bg-slate-950/80">
+                                    <table class="w-full text-left text-sm min-w-[500px]" id="unitTable">
+                                        <thead class="bg-slate-900/90 text-slate-300 text-[11px] uppercase font-extrabold border-b border-slate-800">
+                                            <tr>
+                                                <th class="p-3">Nomor Polisi</th>
+                                                <th class="p-3">Noka / Nosin (No. Rangka & Mesin)</th>
+                                                <th class="p-3 w-14 text-center">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="unitTableBody">
+                                            <tr class="border-b border-slate-800/60">
+                                                <td class="p-2">
+                                                    <input type="text" class="unit-nopol w-full p-2.5 glass-input rounded-lg text-xs font-bold uppercase tracking-wider text-tribik-400" placeholder="B 7788 TRB">
+                                                </td>
+                                                <td class="p-2">
+                                                    <input type="text" class="unit-noka w-full p-2.5 glass-input rounded-lg text-xs font-mono" placeholder="MHKS889910 / Mesin: 1NR">
+                                                </td>
+                                                <td class="p-2 text-center">
+                                                    <button type="button" onclick="removeUnitRow(this, 'unitTableBody')" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition min-h-[38px] min-w-[38px]" title="Hapus Baris">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button type="button" onclick="addUnitRow('unitTableBody', 'unit')" class="px-4 sm:px-5 py-2.5 bg-slate-900 hover:bg-tribik-900/50 text-tribik-300 font-bold text-xs rounded-xl border border-tribik-500/50 transition shadow-sm inline-flex items-center gap-2 transform active:scale-95 min-h-[44px]">
+                                    <i class="fa-solid fa-plus-circle text-sm"></i> Tambah Nopol Kendaraan
+                                </button>
+                            </div>
                         </div>
 
                     </div>
 
-                    <!-- SECTION 2: Catatan Umum & Tanda Tangan Digital -->
+                    <!-- SECTION 2: Tanda Tangan Digital -->
                     <div class="border-t border-slate-700/80 pt-5 sm:pt-6">
                         <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3 mb-5 sm:mb-6">
                             <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">2</span>
@@ -663,7 +665,7 @@
                                     </div>
                                     <p class="leading-relaxed">1. Data yang diinputkan akan langsung di-generate menjadi <strong class="text-white">Dokumen PDF Resmi</strong>.</p>
                                     <p class="leading-relaxed">2. Pengajuan akan diteruskan secara otomatis via WhatsApp ke nomor operasional: <strong class="text-emerald-400">08111454507</strong>.</p>
-                                    <p class="leading-relaxed">3. Pastikan Nomor Polisi serta Noka/Nosin terisi secara teliti sesuai fisik unit lelang.</p>
+                                    <p class="leading-relaxed">3. Pastikan Nomor Polisi serta Noka/Nosin terisi secara teliti.</p>
                                 </div>
                             </div>
 
@@ -703,11 +705,10 @@
         <section id="tabHistorySection" class="hidden space-y-6">
             <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-700/70 shadow-glass">
                 
-                <!-- Table Filters & Clear Action -->
                 <div class="flex flex-col md:flex-row justify-between items-center gap-3.5 sm:gap-4 mb-6">
                     <div class="w-full md:w-96 relative">
                         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                        <input type="text" id="searchInput" onkeyup="filterRecords()" placeholder="Cari Nama, NIK/SIM, No. Polisi, Noka/Nosin..." class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
+                        <input type="text" id="searchInput" onkeyup="filterRecords()" placeholder="Cari Nama, NIK/SIM, Nopol, Noka..." class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                     </div>
 
                     <div class="flex items-center gap-2.5 sm:gap-3 w-full md:w-auto justify-between md:justify-end">
@@ -724,7 +725,6 @@
                     </div>
                 </div>
 
-                <!-- Table Content -->
                 <div class="overflow-x-auto rounded-2xl border border-slate-700/80">
                     <table class="w-full text-left text-sm min-w-[640px]">
                         <thead class="bg-slate-900/90 text-slate-300 uppercase text-[11px] font-extrabold border-b border-slate-800">
@@ -733,12 +733,11 @@
                                 <th class="p-3.5">Tanggal</th>
                                 <th class="p-3.5">Kategori Form</th>
                                 <th class="p-3.5">Pemohon & Vendor</th>
-                                <th class="p-3.5">Identitas (NIK/Polisi/Noka)</th>
+                                <th class="p-3.5">Identitas & Unit</th>
                                 <th class="p-3.5 text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="historyTableBody" class="divide-y divide-slate-800/60 bg-slate-900/40">
-                            <!-- Populated dynamically by JS -->
                         </tbody>
                     </table>
                 </div>
@@ -752,7 +751,6 @@
 
         <!-- ==================== TAB 3: DASHBOARD STATISTIK ==================== -->
         <section id="tabDashboardSection" class="hidden space-y-6">
-            <!-- Stats Cards Grid (Bento Style) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                 <div class="glass-card p-5 sm:p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
                     <div>
@@ -795,7 +793,6 @@
                 </div>
             </div>
 
-            <!-- Visual Info Card -->
             <div class="glass-card rounded-3xl border border-slate-700/70 p-5 sm:p-8 shadow-glass">
                 <h3 class="font-extrabold text-white text-base sm:text-lg mb-4 sm:mb-5 flex items-center gap-2.5">
                     <i class="fa-solid fa-gavel text-tribik-400"></i> Panduan Prosedur Balai Lelang Tribik
@@ -803,15 +800,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-sm">
                     <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-700/80">
                         <div class="font-bold text-tribik-400 mb-2 text-sm">1. Form Cek Unit Lelang</div>
-                        <p class="text-slate-300 text-xs leading-relaxed">Isi data Nama Lengkap, NIK/SIM/ID Karyawan, Nama Vendor, Nomor Polisi, serta Noka/Nosin untuk verifikasi inspeksi kelayakan fisik kendaraan lelang.</p>
+                        <p class="text-slate-300 text-xs leading-relaxed">Mendukung multi nopol dan Noka/Nosin kendaraan untuk verifikasi inspeksi kelayakan fisik kendaraan lelang secara efisien.</p>
                     </div>
                     <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-700/80">
                         <div class="font-bold text-tribik-400 mb-2 text-sm">2. Form Pengambilan Barang</div>
-                        <p class="text-slate-300 text-xs leading-relaxed">Gunakan tombol "+ Tambah Item Barang" untuk memasukkan rincian perlengkapan/suku cadang unit lelang secara dinamis.</p>
+                        <p class="text-slate-300 text-xs leading-relaxed">Gunakan tombol tambah item barang untuk memasukkan rincian atribut/perlengkapan lelang secara dinamis.</p>
                     </div>
                     <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-700/80">
                         <div class="font-bold text-tribik-400 mb-2 text-sm">3. Form Pengambilan Unit</div>
-                        <p class="text-slate-300 text-xs leading-relaxed">Izin serah terima pengeluaran unit kendaraan lelang dengan verifikasi identitas pengambil, Nomor Polisi, dan Noka/Nosin kendaraan.</p>
+                        <p class="text-slate-300 text-xs leading-relaxed">Izin serah terima pengeluaran multi unit kendaraan lelang dari pool penyimpanan dengan validasi identitas lengkap.</p>
                     </div>
                 </div>
             </div>
@@ -823,7 +820,6 @@
     <div id="detailModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-xl z-50 hidden flex items-center justify-center p-3 sm:p-5">
         <div class="glass-card rounded-3xl max-w-2xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-slate-700 flex flex-col justify-between transform transition-all duration-300">
             <div id="printableReceipt" class="p-5 sm:p-8 space-y-5 sm:space-y-6">
-                <!-- Modal Header Official -->
                 <div class="border-b border-slate-700/80 pb-4 sm:pb-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-tribik-600 to-indigo-700 text-white flex items-center justify-center font-black text-lg sm:text-xl shadow-glow-red border border-tribik-400/40 shrink-0">
@@ -845,17 +841,13 @@
                     </div>
                 </div>
 
-                <!-- Content Rendered Dynamically by JS -->
                 <div id="modalContent" class="space-y-4 text-xs sm:text-sm text-slate-200">
-                    <!-- Dynamic details populated here -->
                 </div>
 
-                <!-- Signatures Display (Bento Style) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-3.5 border-t border-slate-700/80 text-center text-xs">
                     <div class="bg-slate-900/70 p-3.5 sm:p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between">
                         <p class="text-slate-300 uppercase font-bold text-[10px] tracking-wider mb-2">Pemohon / Pengaju</p>
                         <div id="modalSignatureContainer" class="h-16 my-1 flex items-center justify-center">
-                            <!-- Canvas image rendered here -->
                         </div>
                         <p id="modalApplicantName" class="font-bold text-white text-xs border-t border-slate-800 pt-2 mt-1">------------------</p>
                     </div>
@@ -869,7 +861,6 @@
                 </div>
             </div>
 
-            <!-- Modal Action Bar -->
             <div class="bg-slate-950/90 px-4 sm:px-6 py-3.5 sm:py-4 rounded-b-3xl border-t border-slate-700/80 flex flex-col sm:flex-row justify-between items-center gap-2.5 sm:gap-3 no-print">
                 <button onclick="closeModal()" class="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs rounded-xl transition border border-slate-700 active:scale-95 min-h-[44px]">
                     Tutup
@@ -892,7 +883,6 @@
         <span id="toastMessage" class="text-xs font-semibold">Pesan notifikasi</span>
     </div>
 
-    <!-- FOOTER -->
     <footer class="bg-slate-950 border-t border-slate-800/80 py-6 sm:py-8 mt-12 sm:mt-16 text-center text-xs text-slate-400">
         <div class="max-w-7xl mx-auto px-4">
             <p class="font-medium text-slate-300">2026 © Nunu Tribik. All Rights Reserved.</p>
@@ -925,7 +915,6 @@
                 const gain = ctx.createGain();
                 osc.connect(gain);
                 gain.connect(ctx.destination);
-
                 const now = ctx.currentTime;
 
                 if (type === 'click') {
@@ -934,8 +923,7 @@
                     osc.frequency.exponentialRampToValueAtTime(850, now + 0.05);
                     gain.gain.setValueAtTime(0.12, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-                    osc.start(now);
-                    osc.stop(now + 0.05);
+                    osc.start(now); osc.stop(now + 0.05);
                 } else if (type === 'submit') {
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(523.25, now);
@@ -943,44 +931,37 @@
                     osc.frequency.setValueAtTime(783.99, now + 0.16);
                     gain.gain.setValueAtTime(0.2, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-                    osc.start(now);
-                    osc.stop(now + 0.35);
+                    osc.start(now); osc.stop(now + 0.35);
                 } else if (type === 'add') {
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(400, now);
                     osc.frequency.exponentialRampToValueAtTime(950, now + 0.08);
                     gain.gain.setValueAtTime(0.15, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-                    osc.start(now);
-                    osc.stop(now + 0.08);
+                    osc.start(now); osc.stop(now + 0.08);
                 } else if (type === 'delete') {
                     osc.type = 'sawtooth';
                     osc.frequency.setValueAtTime(600, now);
                     osc.frequency.exponentialRampToValueAtTime(200, now + 0.09);
                     gain.gain.setValueAtTime(0.12, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
-                    osc.start(now);
-                    osc.stop(now + 0.09);
+                    osc.start(now); osc.stop(now + 0.09);
                 } else if (type === 'reset') {
                     osc.type = 'square';
                     osc.frequency.setValueAtTime(320, now);
                     osc.frequency.exponentialRampToValueAtTime(160, now + 0.12);
                     gain.gain.setValueAtTime(0.1, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-                    osc.start(now);
-                    osc.stop(now + 0.12);
+                    osc.start(now); osc.stop(now + 0.12);
                 } else if (type === 'warning') {
                     osc.type = 'sawtooth';
                     osc.frequency.setValueAtTime(300, now);
                     osc.frequency.setValueAtTime(220, now + 0.08);
                     gain.gain.setValueAtTime(0.15, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-                    osc.start(now);
-                    osc.stop(now + 0.2);
+                    osc.start(now); osc.stop(now + 0.2);
                 }
-            } catch(e) {
-                console.warn('Audio feedback error:', e);
-            }
+            } catch(e) { console.warn('Audio feedback error:', e); }
         }
 
         function toggleSound() {
@@ -988,7 +969,6 @@
             const label = document.getElementById('soundLabel');
             const icon = document.getElementById('soundIcon');
             const mobileIcon = document.getElementById('mobileSoundIcon');
-
             if (soundEnabled) {
                 if (label) label.innerText = 'Suara: ON';
                 if (icon) icon.className = 'fa-solid fa-volume-high text-amber-400';
@@ -1003,8 +983,7 @@
             }
         }
 
-        // Persistent Local Storage Key
-        const STORAGE_KEY = 'tribik_auction_form_submissions';
+        const STORAGE_KEY = 'tribik_auction_form_submissions_v2';
         let currentSubmissions = [];
 
         let signatureCanvas, signatureCtx;
@@ -1062,7 +1041,6 @@
                 showToast('Riwayat pengajuan sudah kosong.', 'info');
                 return;
             }
-
             playSound('delete');
             currentSubmissions = [];
             saveHistoryToStorage();
@@ -1085,7 +1063,6 @@
 
         function switchTab(tabName) {
             playSound('click');
-
             const formSec = document.getElementById('tabFormSection');
             const histSec = document.getElementById('tabHistorySection');
             const dashSec = document.getElementById('tabDashboardSection');
@@ -1182,6 +1159,45 @@
             }
         }
 
+        // Dynamic Unit Rows (For Cek Unit & Pengambilan Unit)
+        function addUnitRow(tbodyId, type) {
+            playSound('add');
+            const tbody = document.getElementById(tbodyId);
+            if (!tbody) return;
+            const tr = document.createElement('tr');
+            tr.className = "border-b border-slate-800/60";
+            const placeholderNopol = type === 'cek' ? 'B 9812 TBK' : 'B 7788 TRB';
+            const placeholderNoka = type === 'cek' ? 'MHKS123456 / Mesin: 2TR' : 'MHKS889910 / Mesin: 1NR';
+            const classNopol = type === 'cek' ? 'cek-nopol' : 'unit-nopol';
+            const classNoka = type === 'cek' ? 'cek-noka' : 'unit-noka';
+
+            tr.innerHTML = `
+                <td class="p-2">
+                    <input type="text" class="${classNopol} w-full p-2.5 glass-input rounded-lg text-xs font-bold uppercase tracking-wider text-tribik-400" placeholder="${placeholderNopol}">
+                </td>
+                <td class="p-2">
+                    <input type="text" class="${classNoka} w-full p-2.5 glass-input rounded-lg text-xs font-mono" placeholder="${placeholderNoka}">
+                </td>
+                <td class="p-2 text-center">
+                    <button type="button" onclick="removeUnitRow(this, '${tbodyId}')" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition min-h-[38px] min-w-[38px]" title="Hapus Baris">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function removeUnitRow(btn, tbodyId) {
+            const tbody = document.getElementById(tbodyId);
+            if(tbody && tbody.rows.length > 1) {
+                playSound('delete');
+                btn.closest('tr').remove();
+            } else {
+                playSound('warning');
+                showToast('Minimal harus ada 1 unit kendaraan', 'warning');
+            }
+        }
+
         function addItemRow() {
             playSound('add');
             const tbody = document.getElementById('itemsTableBody');
@@ -1256,15 +1272,12 @@
                 signatureCtx.stroke();
             }
 
-            function stopDraw() {
-                isDrawing = false;
-            }
+            function stopDraw() { isDrawing = false; }
 
             signatureCanvas.addEventListener('mousedown', startDraw);
             signatureCanvas.addEventListener('mousemove', draw);
             signatureCanvas.addEventListener('mouseup', stopDraw);
             signatureCanvas.addEventListener('mouseleave', stopDraw);
-
             signatureCanvas.addEventListener('touchstart', startDraw, { passive: false });
             signatureCanvas.addEventListener('touchmove', draw, { passive: false });
             signatureCanvas.addEventListener('touchend', stopDraw);
@@ -1275,7 +1288,7 @@
                 const file = input.files[0];
                 if (file.size > 5 * 1024 * 1024) {
                     playSound('warning');
-                    showToast('Ukuran foto KTP / ID Card maksimal 5MB', 'warning');
+                    showToast('Ukuran foto KTP maksimal 5MB', 'warning');
                     input.value = '';
                     return;
                 }
@@ -1318,7 +1331,7 @@
 
             const fnLabel = document.getElementById(filenameId);
             if (fnLabel) {
-                fnLabel.innerHTML = `<i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...`;
+                fnLabel.innerHTML = `<i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload KTP...`;
             }
         }
 
@@ -1332,16 +1345,12 @@
         function generatePdfDocument(record) {
             const jspdfLib = window.jspdf;
             if (!jspdfLib || !jspdfLib.jsPDF) {
-                showToast('Gagal memuat sistem PDF. Periksa koneksi internet.', 'warning');
+                showToast('Gagal memuat sistem PDF.', 'warning');
                 return 'Tribik_Form.pdf';
             }
 
             const { jsPDF } = jspdfLib;
-            const doc = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            });
+            const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
             const primaryRed = [225, 29, 72];
             const darkSlate = [15, 23, 42];
@@ -1351,11 +1360,9 @@
             doc.setFillColor(darkSlate[0], darkSlate[1], darkSlate[2]);
             doc.roundedRect(12, 10, 186, 32, 4, 4, 'F');
 
-            // Left Crimson Pillar
             doc.setFillColor(primaryRed[0], primaryRed[1], primaryRed[2]);
             doc.roundedRect(12, 10, 5, 32, 2, 2, 'F');
 
-            // Logo Badge
             doc.setFillColor(primaryRed[0], primaryRed[1], primaryRed[2]);
             doc.roundedRect(22, 14, 14, 14, 3, 3, 'F');
             doc.setTextColor(255, 255, 255);
@@ -1363,7 +1370,6 @@
             doc.setFontSize(11);
             doc.text('TRB', 29, 23, { align: 'center' });
 
-            // Brand Title
             doc.setTextColor(255, 255, 255);
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(14);
@@ -1379,7 +1385,6 @@
             doc.setFont('helvetica', 'bold');
             doc.text('● DOKUMEN DIGITAL RESMI TERVERIFIKASI', 41, 33);
 
-            // Document ID Box
             doc.setFillColor(30, 41, 59);
             doc.roundedRect(142, 14, 52, 24, 3, 3, 'F');
             
@@ -1398,7 +1403,6 @@
             doc.setFont('helvetica', 'normal');
             doc.text(`TANGGAL: ${record.date || '--/--/----'}`, 146, 33);
 
-            // Category Title Pill
             doc.setFillColor(255, 241, 242);
             doc.setDrawColor(254, 205, 211);
             doc.setLineWidth(0.3);
@@ -1409,7 +1413,6 @@
             doc.setFontSize(10);
             doc.text(`KATEGORI PENGAJUAN: ${(record.type || '').toUpperCase()}`, 16, 54.5);
 
-            // Applicant Section
             const applicantBody = [
                 ['Nama Lengkap Pemohon', record.applicant || '-'],
                 ['NIK / SIM / ID Karyawan', record.nikSimId || '-'],
@@ -1422,63 +1425,36 @@
                 head: [['DATA PEMOHON', 'Rincian Informasi Identitas']],
                 body: applicantBody,
                 theme: 'grid',
-                headStyles: {
-                    fillColor: primaryRed,
-                    textColor: [255, 255, 255],
-                    fontStyle: 'bold',
-                    fontSize: 9,
-                    cellPadding: 3
-                },
-                bodyStyles: {
-                    fontSize: 8.5,
-                    textColor: [30, 41, 59],
-                    cellPadding: 3
-                },
-                columnStyles: {
-                    0: { fontStyle: 'bold', cellWidth: 55, fillColor: [241, 245, 249] },
-                    1: { cellWidth: 'auto' }
-                },
-                styles: {
-                    lineColor: borderSlate,
-                    lineWidth: 0.2
-                }
+                headStyles: { fillColor: primaryRed, textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 9, cellPadding: 3 },
+                bodyStyles: { fontSize: 8.5, textColor: [30, 41, 59], cellPadding: 3 },
+                columnStyles: { 0: { fontStyle: 'bold', cellWidth: 55, fillColor: [241, 245, 249] }, 1: { cellWidth: 'auto' } },
+                styles: { lineColor: borderSlate, lineWidth: 0.2 }
             });
 
             let currentY = doc.lastAutoTable ? doc.lastAutoTable.finalY + 7 : 100;
 
-            // Details Section
             if (record.type === 'Cek Unit' || record.type === 'Pengambilan Unit') {
-                const unitBody = [
-                    ['Nomor Polisi Unit', record.noPolisi || record.details?.noPolisi || '-'],
-                    ['Noka / Nosin (Nomor Rangka & Mesin)', record.nokaNosin || record.details?.nokaNosin || '-']
-                ];
+                const unitsList = record.details?.units || [{ noPolisi: record.noPolisi, nokaNosin: record.nokaNosin }];
+                const unitRows = unitsList.map((u, idx) => [
+                    (idx + 1).toString(),
+                    u.noPolisi || '-',
+                    u.nokaNosin || '-'
+                ]);
 
                 doc.autoTable({
                     startY: currentY,
                     margin: { left: 12, right: 12 },
-                    head: [['SPESIFIKASI UNIT LELANG', 'Rincian Parameter Kendaraan']],
-                    body: unitBody,
+                    head: [['No', 'Nomor Polisi Unit', 'Noka / Nosin (Nomor Rangka & Mesin)']],
+                    body: unitRows,
                     theme: 'grid',
-                    headStyles: {
-                        fillColor: darkSlate,
-                        textColor: [255, 255, 255],
-                        fontStyle: 'bold',
-                        fontSize: 9,
-                        cellPadding: 3
-                    },
-                    bodyStyles: {
-                        fontSize: 8.5,
-                        textColor: [30, 41, 59],
-                        cellPadding: 3
-                    },
+                    headStyles: { fillColor: darkSlate, textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 9, cellPadding: 3 },
+                    bodyStyles: { fontSize: 8.5, textColor: [30, 41, 59], cellPadding: 3 },
                     columnStyles: {
-                        0: { fontStyle: 'bold', cellWidth: 55, fillColor: [241, 245, 249] },
-                        1: { cellWidth: 'auto', fontStyle: 'bold', textColor: primaryRed }
+                        0: { halign: 'center', cellWidth: 12 },
+                        1: { fontStyle: 'bold', cellWidth: 48, textColor: primaryRed },
+                        2: { cellWidth: 'auto', fontFamily: 'courier' }
                     },
-                    styles: {
-                        lineColor: borderSlate,
-                        lineWidth: 0.2
-                    }
+                    styles: { lineColor: borderSlate, lineWidth: 0.2 }
                 });
 
                 currentY = doc.lastAutoTable ? doc.lastAutoTable.finalY + 7 : currentY + 30;
@@ -1497,28 +1473,15 @@
                     head: [['No', 'Nama / Rincian Barang', 'Jumlah', 'Keterangan / Peruntukan']],
                     body: itemRows,
                     theme: 'striped',
-                    headStyles: {
-                        fillColor: darkSlate,
-                        textColor: [255, 255, 255],
-                        fontStyle: 'bold',
-                        fontSize: 8.5,
-                        cellPadding: 3
-                    },
-                    bodyStyles: {
-                        fontSize: 8,
-                        textColor: [30, 41, 59],
-                        cellPadding: 2.5
-                    },
+                    headStyles: { fillColor: darkSlate, textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8.5, cellPadding: 3 },
+                    bodyStyles: { fontSize: 8, textColor: [30, 41, 59], cellPadding: 2.5 },
                     columnStyles: {
                         0: { halign: 'center', cellWidth: 12 },
                         1: { cellWidth: 'auto', fontStyle: 'bold' },
                         2: { cellWidth: 32, fontStyle: 'bold', textColor: primaryRed },
                         3: { cellWidth: 65 }
                     },
-                    styles: {
-                        lineColor: borderSlate,
-                        lineWidth: 0.2
-                    }
+                    styles: { lineColor: borderSlate, lineWidth: 0.2 }
                 });
 
                 currentY = doc.lastAutoTable ? doc.lastAutoTable.finalY + 6 : currentY + 30;
@@ -1527,21 +1490,17 @@
                     doc.setFillColor(248, 250, 252);
                     doc.setDrawColor(226, 232, 240);
                     doc.roundedRect(12, currentY, 186, 12, 2, 2, 'FD');
-
                     doc.setFontSize(8);
                     doc.setFont('helvetica', 'bold');
                     doc.setTextColor(71, 85, 105);
                     doc.text('Catatan Tambahan:', 16, currentY + 5);
-
                     doc.setFont('helvetica', 'normal');
                     doc.setTextColor(30, 41, 59);
                     doc.text(`"${record.details.catatan}"`, 16, currentY + 9.5);
-
                     currentY += 17;
                 }
             }
 
-            // KTP Photo Attachment in PDF
             if (record.ktpPhotoData) {
                 doc.setFillColor(248, 250, 252);
                 doc.setDrawColor(226, 232, 240);
@@ -1567,16 +1526,13 @@
                 currentY += 44;
             }
 
-            // Verification & Signatures Box
             doc.setFillColor(255, 255, 255);
             doc.setDrawColor(226, 232, 240);
             doc.setLineWidth(0.4);
             doc.roundedRect(12, currentY, 186, 52, 3, 3, 'S');
 
-            // Left Signature
             doc.setFillColor(248, 250, 252);
             doc.roundedRect(16, currentY + 4, 86, 44, 2, 2, 'F');
-
             doc.setFontSize(8);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(71, 85, 105);
@@ -1589,22 +1545,19 @@
                     doc.setFont('helvetica', 'italic');
                     doc.setFontSize(8);
                     doc.setTextColor(148, 163, 184);
-                    doc.text('[Tanda Tangan Digital Pemohon]', 20, currentY + 24);
+                    doc.text('[Tanda Tangan Digital]', 20, currentY + 24);
                 }
             }
 
             doc.setDrawColor(203, 213, 225);
             doc.line(20, currentY + 38, 94, currentY + 38);
-
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(8);
             doc.setTextColor(15, 23, 42);
             doc.text(record.applicant || 'Pemohon Lelang', 20, currentY + 42);
 
-            // Right Supervisor Verification
             doc.setFillColor(248, 250, 252);
             doc.roundedRect(108, currentY + 4, 86, 44, 2, 2, 'F');
-
             doc.setFontSize(8);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(71, 85, 105);
@@ -1613,7 +1566,6 @@
             doc.setFillColor(236, 253, 245);
             doc.setDrawColor(167, 243, 208);
             doc.roundedRect(112, currentY + 16, 78, 16, 2, 2, 'FD');
-
             doc.setTextColor(5, 150, 105);
             doc.setFontSize(7.5);
             doc.setFont('helvetica', 'bold');
@@ -1624,15 +1576,12 @@
 
             doc.setDrawColor(203, 213, 225);
             doc.line(112, currentY + 38, 186, currentY + 38);
-
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(8);
             doc.setTextColor(15, 23, 42);
             doc.text('Supervisor Operasional Lelang', 112, currentY + 42);
 
-            // Footer Page
             const pageHeight = doc.internal.pageSize.getHeight();
-            
             doc.setDrawColor(primaryRed[0], primaryRed[1], primaryRed[2]);
             doc.setLineWidth(0.8);
             doc.line(12, pageHeight - 14, 198, pageHeight - 14);
@@ -1640,12 +1589,11 @@
             doc.setFontSize(7);
             doc.setFont('helvetica', 'normal');
             doc.setTextColor(100, 116, 139);
-            doc.text('© 2026 Balai Lelang Tribik - Dokumen ini diterbitkan secara otomatis dan sah sebagai formulir operasional resmi.', 12, pageHeight - 9);
+            doc.text('© 2026 Balai Lelang Tribik - Dokumen ini diterbitkan secara otomatis dan sah.', 12, pageHeight - 9);
             doc.text('Contact Center: 08111454507 | Nunu Tribik', 198, pageHeight - 9, { align: 'right' });
 
             const pdfFileName = `Tribik_Form_${(record.type || 'Form').replace(/\s+/g, '_')}_${record.id || 'TRB'}.pdf`;
             doc.save(pdfFileName);
-
             return pdfFileName;
         }
 
@@ -1654,13 +1602,20 @@
                 const name = document.getElementById('cekNamaLengkap')?.value.trim();
                 const nik = document.getElementById('cekNikSimId')?.value.trim();
                 const vendor = document.getElementById('cekVendorPerusahaan')?.value.trim();
-                const nopol = document.getElementById('cekNoPolisi')?.value.trim();
-                const noka = document.getElementById('cekNokaNosin')?.value.trim();
                 const ktp = document.getElementById('cekKtpData')?.value;
 
-                if (!name || !nik || !vendor || !nopol || !noka || !ktp) {
-                    return "Harap lengkapi semua kolom data & upload foto KTP / ID Card!";
+                if (!name || !nik || !vendor || !ktp) {
+                    return "Harap lengkapi data pemohon & upload foto KTP / ID Card!";
                 }
+                const nopolInputs = document.querySelectorAll('.cek-nopol');
+                let hasUnit = false;
+                for (let input of nopolInputs) {
+                    if (input.value.trim().length > 0) {
+                        hasUnit = true;
+                        break;
+                    }
+                }
+                if (!hasUnit) return "Harap isi minimal 1 Nomor Polisi kendaraan!";
             } else if (category === 'pengambilan_barang') {
                 const name = document.getElementById('barangNamaLengkap')?.value.trim();
                 const nik = document.getElementById('barangNikSimId')?.value.trim();
@@ -1668,9 +1623,8 @@
                 const ktp = document.getElementById('barangKtpData')?.value;
 
                 if (!name || !nik || !vendor || !ktp) {
-                    return "Harap isi Nama Lengkap, NIK/SIM/ID, Vendor, dan upload foto KTP / ID Card!";
+                    return "Harap lengkapi data pemohon & upload KTP!";
                 }
-
                 const itemInputs = document.querySelectorAll('.item-name');
                 let hasItem = false;
                 for (let input of itemInputs) {
@@ -1679,27 +1633,31 @@
                         break;
                     }
                 }
-                if (!hasItem) {
-                    return "Harap isi setidaknya 1 Rincian Barang yang diambil!";
-                }
+                if (!hasItem) return "Harap isi setidaknya 1 Rincian Barang!";
             } else if (category === 'pengambilan_unit') {
                 const name = document.getElementById('unitNamaLengkap')?.value.trim();
                 const nik = document.getElementById('unitNikSimId')?.value.trim();
                 const vendor = document.getElementById('unitVendorPerusahaan')?.value.trim();
-                const nopol = document.getElementById('unitNoPolisi')?.value.trim();
-                const noka = document.getElementById('unitNokaNosin')?.value.trim();
                 const ktp = document.getElementById('unitKtpData')?.value;
 
-                if (!name || !nik || !vendor || !nopol || !noka || !ktp) {
-                    return "Harap lengkapi semua kolom data & upload foto KTP / ID Card!";
+                if (!name || !nik || !vendor || !ktp) {
+                    return "Harap lengkapi data pemohon & upload KTP!";
                 }
+                const nopolInputs = document.querySelectorAll('.unit-nopol');
+                let hasUnit = false;
+                for (let input of nopolInputs) {
+                    if (input.value.trim().length > 0) {
+                        hasUnit = true;
+                        break;
+                    }
+                }
+                if (!hasUnit) return "Harap isi minimal 1 Nomor Polisi unit yang diambil!";
             }
             return null;
         }
 
         function handleFormSubmit(event) {
             event.preventDefault();
-
             const category = document.getElementById('selectedType').value;
 
             const validationError = validateActiveCategory(category);
@@ -1716,39 +1674,44 @@
             }
 
             const docId = document.getElementById('generatedDocNum').innerText;
-
             let typeTitle = "";
             let nameVal = "";
             let nikVal = "";
             let vendorVal = "";
-            let nopolVal = "";
-            let nokaVal = "";
             let extraData = {};
             let ktpVal = "";
+            let summaryPolisi = "";
+            let summaryNoka = "";
 
             if(category === 'cek_unit') {
                 typeTitle = "Cek Unit";
                 nameVal = document.getElementById('cekNamaLengkap').value;
                 nikVal = document.getElementById('cekNikSimId').value;
                 vendorVal = document.getElementById('cekVendorPerusahaan').value;
-                nopolVal = document.getElementById('cekNoPolisi').value;
-                nokaVal = document.getElementById('cekNokaNosin').value;
                 ktpVal = document.getElementById('cekKtpData').value;
 
-                extraData = {
-                    namaLengkap: nameVal,
-                    nikSimId: nikVal,
-                    vendor: vendorVal,
-                    noPolisi: nopolVal,
-                    nokaNosin: nokaVal
-                };
+                const nopols = document.querySelectorAll('.cek-nopol');
+                const nokas = document.querySelectorAll('.cek-noka');
+                let unitsList = [];
+                nopols.forEach((el, idx) => {
+                    if (el.value.trim()) {
+                        unitsList.push({
+                            noPolisi: el.value.trim(),
+                            nokaNosin: nokas[idx]?.value.trim() || '-'
+                        });
+                    }
+                });
+                summaryPolisi = unitsList.map(u => u.noPolisi).join(', ');
+                summaryNoka = unitsList.map(u => u.nokaNosin).join(' | ');
+
+                extraData = { namaLengkap: nameVal, nikSimId: nikVal, vendor: vendorVal, units: unitsList };
             } else if(category === 'pengambilan_barang') {
                 typeTitle = "Pengambilan Barang";
                 nameVal = document.getElementById('barangNamaLengkap').value;
                 nikVal = document.getElementById('barangNikSimId').value;
                 vendorVal = document.getElementById('barangVendorPerusahaan').value;
-                nopolVal = "-";
-                nokaVal = "-";
+                summaryPolisi = "-";
+                summaryNoka = "-";
                 ktpVal = document.getElementById('barangKtpData').value;
 
                 const names = document.querySelectorAll('.item-name');
@@ -1780,17 +1743,23 @@
                 nameVal = document.getElementById('unitNamaLengkap').value;
                 nikVal = document.getElementById('unitNikSimId').value;
                 vendorVal = document.getElementById('unitVendorPerusahaan').value;
-                nopolVal = document.getElementById('unitNoPolisi').value;
-                nokaVal = document.getElementById('unitNokaNosin').value;
                 ktpVal = document.getElementById('unitKtpData').value;
 
-                extraData = {
-                    namaLengkap: nameVal,
-                    nikSimId: nikVal,
-                    vendor: vendorVal,
-                    noPolisi: nopolVal,
-                    nokaNosin: nokaVal
-                };
+                const nopols = document.querySelectorAll('.unit-nopol');
+                const nokas = document.querySelectorAll('.unit-noka');
+                let unitsList = [];
+                nopols.forEach((el, idx) => {
+                    if (el.value.trim()) {
+                        unitsList.push({
+                            noPolisi: el.value.trim(),
+                            nokaNosin: nokas[idx]?.value.trim() || '-'
+                        });
+                    }
+                });
+                summaryPolisi = unitsList.map(u => u.noPolisi).join(', ');
+                summaryNoka = unitsList.map(u => u.nokaNosin).join(' | ');
+
+                extraData = { namaLengkap: nameVal, nikSimId: nikVal, vendor: vendorVal, units: unitsList };
             }
 
             const today = new Date();
@@ -1803,8 +1772,8 @@
                 applicant: nameVal,
                 nikSimId: nikVal,
                 vendor: vendorVal,
-                noPolisi: nopolVal,
-                nokaNosin: nokaVal,
+                noPolisi: summaryPolisi,
+                nokaNosin: summaryNoka,
                 details: extraData,
                 signatureData: signatureCanvas ? signatureCanvas.toDataURL() : '',
                 ktpPhotoData: ktpVal
@@ -1815,24 +1784,18 @@
             saveHistoryToStorage();
 
             playSound('submit');
-            
             const generatedPdfName = generatePdfDocument(newRecord);
-            
-            showToast('PDF Terunduh! Membuka WhatsApp... Pesan siap terkirim.', 'success');
+            showToast('PDF Terunduh! Membuka WhatsApp...', 'success');
 
             sendToWhatsApp(newRecord, generatedPdfName);
-            
             generateDocumentNumber();
             resetForm();
             switchTab('history');
-
-            // DIRECT REDIRECT TO MODAL PREVIEW RECEIPT
             viewDetail(0);
         }
 
         function sendToWhatsApp(record, pdfName) {
             const phoneNumber = "628111454507";
-            
             let message = `*TRIBIK FORM - BALAI LELANG TRIBIK*\n`;
             message += `====================================\n`;
             message += `*No. Dokumen:* ${record.id}\n`;
@@ -1840,40 +1803,37 @@
             message += `*Kategori Form:* ${record.type}\n\n`;
 
             message += `*DATA PEMOHON:*\n`;
-            message += `• *Nama Lengkap:* ${record.applicant}\n`;
-            message += `• *NIK/SIM/ID:* ${record.nikSimId}\n`;
-            message += `• *Vendor/Perusahaan:* ${record.vendor}\n`;
-            message += `• *Lampiran KTP/ID:* Terlampir di Sistem & PDF\n\n`;
+            message += `• *Nama:* ${record.applicant}\n`;
+            message += `• *NIK/SIM:* ${record.nikSimId}\n`;
+            message += `• *Vendor:* ${record.vendor}\n\n`;
 
             if (record.type === 'Cek Unit' || record.type === 'Pengambilan Unit') {
-                message += `*DETAIL UNIT LELANG:*\n`;
-                message += `• *Nomor Polisi:* ${record.noPolisi}\n`;
-                message += `• *Noka / Nosin:* ${record.nokaNosin}\n\n`;
+                message += `*DAFTAR UNIT KENDARAAN:*\n`;
+                if (record.details && record.details.units) {
+                    record.details.units.forEach((u, i) => {
+                        message += `${i+1}. Nopol: *${u.noPolisi}* | Noka: ${u.nokaNosin}\n`;
+                    });
+                }
+                message += `\n`;
             } else if (record.type === 'Pengambilan Barang') {
-                message += `*RINCIAN ITEM BARANG:*\n`;
-                if (record.details && record.details.items && record.details.items.length > 0) {
+                message += `*RINCIAN BARANG:*\n`;
+                if (record.details && record.details.items) {
                     record.details.items.forEach((it, i) => {
                         message += `${i+1}. ${it.name} (${it.qty} ${it.unit}) - ${it.note || '-'}\n`;
                     });
-                }
-                if (record.details && record.details.catatan) {
-                    message += `*Catatan:* ${record.details.catatan}\n`;
                 }
                 message += `\n`;
             }
 
             message += `====================================\n`;
-            message += `_Lampiran PDF Resmi: *${pdfName}* (Otomatis terunduh ke perangkat Anda)._`;
+            message += `_Lampiran PDF: *${pdfName}*_`;
 
             const encodedMessage = encodeURIComponent(message);
             const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
             if (isMobile) {
-                setTimeout(() => {
-                    window.location.href = waUrl;
-                }, 500);
+                setTimeout(() => { window.location.href = waUrl; }, 500);
             } else {
                 const win = window.open(waUrl, '_blank');
                 if (!win || win.closed || typeof win.closed === 'undefined') {
@@ -1931,12 +1891,11 @@
                     <td class="p-3.5">${catBadge}</td>
                     <td class="p-3.5">
                         <div class="font-bold text-slate-100 text-xs">${item.applicant}</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5"><i class="fa-solid fa-building text-[10px] mr-1 text-slate-400"></i>${item.vendor || '-'}</div>
+                        <div class="text-[11px] text-slate-400 mt-0.5"><i class="fa-solid fa-building text-[10px] mr-1"></i>${item.vendor || '-'}</div>
                     </td>
                     <td class="p-3.5 text-xs text-slate-300">
-                        <div><strong class="text-slate-400">NIK/SIM:</strong> ${item.nikSimId}</div>
-                        <div><strong class="text-tribik-400">Polisi:</strong> ${item.noPolisi}</div>
-                        <div class="text-[11px] text-slate-400 font-mono"><strong>Noka:</strong> ${item.nokaNosin}</div>
+                        <div><strong class="text-slate-400">NIK:</strong> ${item.nikSimId}</div>
+                        <div><strong class="text-tribik-400">Unit/Polisi:</strong> ${item.noPolisi}</div>
                     </td>
                     <td class="p-3.5 text-center">
                         <button onclick="viewDetail(${index})" class="p-2.5 bg-slate-900 hover:bg-tribik-600 hover:text-white text-slate-200 rounded-xl text-xs font-semibold transition border border-slate-700 shadow-sm active:scale-95 min-h-[38px]">
@@ -1951,7 +1910,6 @@
         function filterRecords() {
             const query = (document.getElementById('searchInput')?.value || '').toLowerCase();
             const typeVal = document.getElementById('filterType')?.value || 'ALL';
-
             const rows = document.querySelectorAll('#historyTableBody tr');
 
             rows.forEach((row, idx) => {
@@ -1962,8 +1920,7 @@
                                      (item.applicant || '').toLowerCase().includes(query) || 
                                      (item.nikSimId || '').toLowerCase().includes(query) ||
                                      (item.vendor || '').toLowerCase().includes(query) ||
-                                     (item.noPolisi || '').toLowerCase().includes(query) ||
-                                     (item.nokaNosin || '').toLowerCase().includes(query);
+                                     (item.noPolisi || '').toLowerCase().includes(query);
 
                 const matchesType = (typeVal === 'ALL') || (item.type === typeVal);
 
@@ -1999,7 +1956,6 @@
 
             const contentDiv = document.getElementById('modalContent');
             let html = `
-                <!-- Bento Data Pemohon Card -->
                 <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-tribik-600/10 rounded-bl-full pointer-events-none"></div>
                     <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
@@ -2028,13 +1984,12 @@
 
             if (item.ktpPhotoData) {
                 html += `
-                    <!-- Bento Lampiran KTP / ID Card -->
                     <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner">
                         <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                             <i class="fa-solid fa-id-card"></i> Lampiran Identitas (KTP / ID Card)
                         </div>
                         <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80 flex justify-center items-center">
-                            <img src="${item.ktpPhotoData}" class="max-h-40 sm:max-h-48 rounded-lg object-contain border border-slate-800" alt="Foto KTP / ID Card">
+                            <img src="${item.ktpPhotoData}" class="max-h-40 sm:max-h-48 rounded-lg object-contain border border-slate-800" alt="Foto KTP">
                         </div>
                     </div>
                 `;
@@ -2042,26 +1997,29 @@
 
             if(item.type === 'Cek Unit' || item.type === 'Pengambilan Unit') {
                 html += `
-                    <!-- Bento Detail Unit Lelang Card -->
-                    <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner relative overflow-hidden">
+                    <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner">
                         <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
-                            <i class="fa-solid fa-car"></i> Rincian Spesifikasi Unit Lelang Mobil
+                            <i class="fa-solid fa-car"></i> Daftar Unit Kendaraan
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80">
-                                <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Nomor Polisi</span>
-                                <span class="text-tribik-400 font-extrabold text-base tracking-wider uppercase mt-0.5 block">${item.noPolisi || item.details?.noPolisi || '-'}</span>
-                            </div>
-                            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80">
-                                <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Noka / Nosin (Nomor Rangka & Mesin)</span>
-                                <span class="font-mono text-slate-200 text-xs font-semibold mt-1 block">${item.nokaNosin || item.details?.nokaNosin || '-'}</span>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="space-y-2">
                 `;
+                const units = item.details?.units || [];
+                units.forEach((u, idx) => {
+                    html += `
+                        <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block">Unit #${idx+1}</span>
+                                <strong class="text-tribik-400 text-sm font-extrabold">${u.noPolisi}</strong>
+                            </div>
+                            <div class="text-xs font-mono text-slate-300">
+                                <strong>Noka/Nosin:</strong> ${u.nokaNosin}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
             } else if(item.type === 'Pengambilan Barang') {
                 html += `
-                    <!-- Bento Detail Barang Card -->
                     <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner">
                         <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                             <i class="fa-solid fa-boxes-stacked"></i> Detail Permintaan Pengambilan Barang
@@ -2077,7 +2035,7 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-800/60">
                 `;
-                if(item.details && item.details.items && item.details.items.length > 0) {
+                if(item.details && item.details.items) {
                     item.details.items.forEach(it => {
                         html += `
                             <tr>
@@ -2088,12 +2046,7 @@
                         `;
                     });
                 }
-                html += `
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                `;
+                html += `</tbody></table></div></div>`;
                 if(item.details && item.details.catatan) {
                     html += `
                         <div class="text-xs bg-slate-900/70 p-3.5 sm:p-4 rounded-xl border border-slate-700/80">
@@ -2142,7 +2095,6 @@
             const iconEl = document.getElementById('toastIcon');
 
             if (!toast || !msgEl || !iconEl) return;
-
             msgEl.innerText = message;
 
             if(type === 'success') {
@@ -2154,7 +2106,6 @@
             }
 
             toast.classList.remove('translate-y-28', 'opacity-0');
-
             setTimeout(() => {
                 toast.classList.add('translate-y-28', 'opacity-0');
             }, 3500);
