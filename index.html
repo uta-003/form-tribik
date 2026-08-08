@@ -26,8 +26,8 @@
                     colors: {
                         oled: {
                             base: '#0f172a',
-                            card: 'rgba(30, 41, 59, 0.80)',
-                            surface: 'rgba(51, 65, 85, 0.60)',
+                            card: 'rgba(30, 41, 59, 0.82)',
+                            surface: 'rgba(51, 65, 85, 0.65)',
                             border: 'rgba(255, 255, 255, 0.15)'
                         },
                         tribik: {
@@ -75,29 +75,29 @@
         }
 
         .glass-card {
-            background: rgba(30, 41, 59, 0.75);
+            background: rgba(30, 41, 59, 0.82);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.14);
         }
 
         .glass-input {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.18);
             color: #f8fafc;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-input:focus {
-            background: rgba(15, 23, 42, 0.92);
+            background: rgba(15, 23, 42, 0.95);
             border-color: #fb7185;
             box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.35);
             outline: none;
         }
 
         ::-webkit-scrollbar {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #0f172a;
@@ -233,28 +233,27 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-tribik-600 selection:text-white">
 
-    <!-- TOP NAVIGATION HEADER -->
-    <header class="bg-slate-900/85 backdrop-blur-2xl border-b border-slate-700/60 sticky top-0 z-40">
+    <header class="bg-slate-900/90 backdrop-blur-2xl border-b border-slate-700/60 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 py-2">
+            <div class="flex items-center justify-between h-16 sm:h-20 py-2">
                 <!-- Brand Logo & Title -->
-                <div class="flex items-center space-x-3.5 cursor-pointer group flex-shrink-0" onclick="switchTab('form')">
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-tribik-600 to-indigo-700 text-white flex items-center justify-center font-black text-xl shadow-glow-red transform group-hover:scale-105 transition-all duration-300 border border-tribik-400/40 flex-shrink-0">
+                <div class="flex items-center space-x-3 cursor-pointer group shrink-0" onclick="switchTab('form')">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-tribik-600 to-indigo-700 text-white flex items-center justify-center font-black text-lg sm:text-xl shadow-glow-red transform group-hover:scale-105 transition-all duration-300 border border-tribik-400/40 shrink-0">
                         <i class="fa-solid fa-car-side"></i>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <div class="flex items-center gap-2 whitespace-nowrap">
-                            <h1 class="font-black text-xl sm:text-2xl tracking-tight text-white leading-snug">Tribik Form</h1>
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-tribik-600/30 text-tribik-300 border border-tribik-500/40 flex-shrink-0">
+                        <div class="flex items-center gap-1.5 sm:gap-2">
+                            <h1 class="font-black text-lg sm:text-2xl tracking-tight text-white leading-tight">Tribik Form</h1>
+                            <span class="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full bg-tribik-600/30 text-tribik-300 border border-tribik-500/40 shrink-0">
                                 Lelang
                             </span>
                         </div>
-                        <p class="text-[11px] text-slate-300 font-medium whitespace-nowrap leading-tight mt-0.5">Balai Lelang Tribik - Portal Pengajuan</p>
+                        <p class="text-[10px] sm:text-[11px] text-slate-300 font-medium leading-tight mt-0.5">Balai Lelang Tribik - Portal Pengajuan</p>
                     </div>
                 </div>
 
-                <!-- Right Nav / Controls -->
-                <div class="hidden md:flex items-center space-x-3 lg:space-x-4 text-sm flex-shrink-0">
+                <!-- Desktop Nav Controls -->
+                <div class="hidden md:flex items-center space-x-3 lg:space-x-4 text-sm shrink-0">
                     <button id="soundToggleBtn" onclick="toggleSound()" class="flex items-center space-x-2 bg-slate-800/90 hover:bg-slate-700 px-3.5 py-2 rounded-xl border border-slate-700/80 text-xs font-semibold text-slate-200 transition-all active:scale-95" title="Aktifkan/Nonaktifkan Suara Aktivitas">
                         <i id="soundIcon" class="fa-solid fa-volume-high text-amber-400"></i>
                         <span id="soundLabel" class="whitespace-nowrap">Suara: ON</span>
@@ -278,10 +277,10 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center gap-2">
-                    <button onclick="toggleSound()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-amber-400 active:scale-95 transition">
+                    <button onclick="toggleSound()" class="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-amber-400 active:scale-95 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
                         <i id="mobileSoundIcon" class="fa-solid fa-volume-high text-sm"></i>
                     </button>
-                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white active:scale-95 transition">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white active:scale-95 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
                         <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
@@ -290,46 +289,45 @@
 
         <!-- Mobile Navigation Dropdown -->
         <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-4 pt-3 pb-5 space-y-2 text-sm backdrop-blur-2xl">
-            <button onclick="switchTab('form'); toggleMobileMenu();" class="w-full text-left py-3 px-4 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-3 border border-slate-800">
+            <button onclick="switchTab('form'); toggleMobileMenu();" class="w-full text-left py-3 px-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-3 border border-slate-800 min-h-[48px]">
                 <i class="fa-solid fa-pen-to-square text-tribik-500"></i> Buat Form Pengajuan
             </button>
-            <button onclick="switchTab('history'); toggleMobileMenu();" class="w-full text-left py-3 px-4 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-3 border border-slate-800">
+            <button onclick="switchTab('history'); toggleMobileMenu();" class="w-full text-left py-3 px-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-3 border border-slate-800 min-h-[48px]">
                 <i class="fa-solid fa-list-check text-tribik-500"></i> Daftar Pengajuan
             </button>
-            <button onclick="switchTab('dashboard'); toggleMobileMenu();" class="w-full text-left py-3 px-4 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-3 border border-slate-800">
+            <button onclick="switchTab('dashboard'); toggleMobileMenu();" class="w-full text-left py-3 px-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold flex items-center gap-3 border border-slate-800 min-h-[48px]">
                 <i class="fa-solid fa-chart-line text-tribik-500"></i> Ringkasan Operasional Lelang
             </button>
         </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
 
         <!-- Page Title & Navigation Sub-bar (Bento Header) -->
-        <div class="mb-8 glass-card p-6 sm:p-8 rounded-3xl shadow-glass border border-slate-700/70 flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative overflow-hidden">
+        <div class="mb-6 sm:mb-8 glass-card p-5 sm:p-8 rounded-3xl shadow-glass border border-slate-700/70 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 relative overflow-hidden">
             <div class="absolute -top-24 -left-24 w-72 h-72 bg-tribik-600/15 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
-                <span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-extrabold bg-tribik-600/25 text-tribik-300 border border-tribik-500/40 mb-3">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] sm:text-xs font-extrabold bg-tribik-600/25 text-tribik-300 border border-tribik-500/40 mb-2.5">
                     <i class="fa-solid fa-gavel mr-2 text-tribik-400"></i> Portal Resmi Balai Lelang Tribik
                 </span>
-                <h2 id="mainHeading" class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                <h2 id="mainHeading" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
                     Form Pengajuan Cek Unit, Pengambilan Barang & Pengambilan Unit
                 </h2>
-                <p class="text-slate-300 text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                <p class="text-slate-300 text-xs sm:text-sm mt-1.5 sm:mt-2 max-w-3xl leading-relaxed">
                     Isi data di bawah ini. Pengajuan akan terunduh otomatis dalam format <strong class="text-white">PDF Resmi</strong> & terkirim langsung ke <strong class="text-emerald-400">WhatsApp</strong>.
                 </p>
             </div>
 
             <!-- Nav Tabs Switcher Responsive Container -->
-            <div class="w-full sm:w-auto overflow-x-auto hide-scrollbar relative z-10 pb-1 sm:pb-0">
+            <div class="w-full sm:w-auto overflow-x-auto hide-scrollbar relative z-10 pb-0.5 sm:pb-0">
                 <div class="flex items-center gap-1.5 min-w-max bg-slate-900/90 p-1.5 rounded-2xl border border-slate-700/70 text-xs sm:text-sm">
-                    <button id="tabBtnForm" onclick="switchTab('form')" class="px-4 sm:px-5 py-2.5 rounded-xl font-bold transition-all duration-200 shadow-glow-red bg-tribik-600 text-white border border-tribik-500/50 whitespace-nowrap">
+                    <button id="tabBtnForm" onclick="switchTab('form')" class="px-4 sm:px-5 py-2.5 rounded-xl font-bold transition-all duration-200 shadow-glow-red bg-tribik-600 text-white border border-tribik-500/50 whitespace-nowrap min-h-[44px]">
                         <i class="fa-solid fa-plus-circle mr-1.5"></i> Form Baru
                     </button>
-                    <button id="tabBtnHistory" onclick="switchTab('history')" class="px-4 sm:px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">
+                    <button id="tabBtnHistory" onclick="switchTab('history')" class="px-4 sm:px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap min-h-[44px]">
                         <i class="fa-solid fa-folder-open mr-1.5"></i> Riwayat <span id="badgeCount" class="ml-1 px-2 py-0.5 text-xs bg-tribik-600/30 text-tribik-300 rounded-full font-extrabold border border-tribik-500/40">0</span>
                     </button>
-                    <button id="tabBtnDashboard" onclick="switchTab('dashboard')" class="px-4 sm:px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">
+                    <button id="tabBtnDashboard" onclick="switchTab('dashboard')" class="px-4 sm:px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap min-h-[44px]">
                         <i class="fa-solid fa-chart-pie mr-1.5"></i> Ringkasan
                     </button>
                 </div>
@@ -337,38 +335,44 @@
         </div>
 
         <!-- ==================== TAB 1: FORM PENGAJUAN ==================== -->
-        <section id="tabFormSection" class="space-y-8">
+        <section id="tabFormSection" class="space-y-6 sm:space-y-8">
 
             <!-- Category Selector Buttons (Bento Grid) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
                 <!-- Bento Card 1: Cek Unit -->
-                <div onclick="selectCategory('cek_unit')" id="catCardCekUnit" class="cursor-pointer glass-card p-6 rounded-3xl border-2 border-tribik-600 cat-card-active transition-all duration-300 relative overflow-hidden group">
-                    <div class="cat-icon-bg absolute top-0 right-0 w-20 h-20 bg-tribik-600/20 rounded-bl-full flex items-top justify-end p-3 text-tribik-400 transition-transform group-hover:scale-110">
-                        <i class="fa-solid fa-magnifying-glass-chart text-2xl"></i>
+                <div onclick="selectCategory('cek_unit')" id="catCardCekUnit" class="cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border-2 border-tribik-600 cat-card-active transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]">
+                    <div>
+                        <div class="cat-icon-bg absolute top-2 right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-tribik-600/20 rounded-bl-full flex items-top justify-end p-2.5 sm:p-3 text-tribik-400 transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-magnifying-glass-chart text-xl sm:text-2xl"></i>
+                        </div>
+                        <span class="cat-badge text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-tribik-400 bg-tribik-600/20 px-2.5 py-0.5 sm:py-1 rounded-lg border border-tribik-600/30 inline-block">Kategori 1</span>
+                        <h3 class="cat-title font-extrabold text-lg sm:text-xl text-white mt-3 sm:mt-4">1. Form Cek Unit Lelang</h3>
+                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Pengajuan inspeksi kelayakan & kondisi fisik kendaraan unit lelang mobil.</p>
                     </div>
-                    <span class="cat-badge text-[11px] font-extrabold uppercase tracking-wider text-tribik-400 bg-tribik-600/20 px-3 py-1 rounded-lg border border-tribik-600/30 inline-block">Kategori 1</span>
-                    <h3 class="cat-title font-extrabold text-xl text-white mt-4">1. Form Cek Unit Lelang</h3>
-                    <p class="cat-desc text-xs text-slate-400 mt-2 leading-relaxed">Pengajuan inspeksi kelayakan & kondisi fisik kendaraan unit lelang mobil.</p>
                 </div>
 
                 <!-- Bento Card 2: Pengambilan Barang -->
-                <div onclick="selectCategory('pengambilan_barang')" id="catCardBarang" class="cursor-pointer glass-card p-6 rounded-3xl border border-slate-700 cat-card-inactive transition-all duration-300 relative overflow-hidden group">
-                    <div class="cat-icon-bg absolute top-0 right-0 w-20 h-20 bg-slate-800/40 rounded-bl-full flex items-top justify-end p-3 text-slate-400 transition-transform group-hover:scale-110">
-                        <i class="fa-solid fa-boxes-packing text-2xl"></i>
+                <div onclick="selectCategory('pengambilan_barang')" id="catCardBarang" class="cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border border-slate-700 cat-card-inactive transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]">
+                    <div>
+                        <div class="cat-icon-bg absolute top-2 right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-slate-800/40 rounded-bl-full flex items-top justify-end p-2.5 sm:p-3 text-slate-400 transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-boxes-packing text-xl sm:text-2xl"></i>
+                        </div>
+                        <span class="cat-badge text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-300 bg-slate-900 px-2.5 py-0.5 sm:py-1 rounded-lg border border-slate-700 inline-block">Kategori 2</span>
+                        <h3 class="cat-title font-extrabold text-lg sm:text-xl text-white mt-3 sm:mt-4">2. Form Pengambilan Barang</h3>
+                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Permohonan pengambilan perlengkapan / barang / atribut unit lelang secara dinamis.</p>
                     </div>
-                    <span class="cat-badge text-[11px] font-extrabold uppercase tracking-wider text-slate-300 bg-slate-900 px-3 py-1 rounded-lg border border-slate-700 inline-block">Kategori 2</span>
-                    <h3 class="cat-title font-extrabold text-xl text-white mt-4">2. Form Pengambilan Barang</h3>
-                    <p class="cat-desc text-xs text-slate-400 mt-2 leading-relaxed">Permohonan pengambilan perlengkapan / barang / atribut unit lelang secara dinamis.</p>
                 </div>
 
                 <!-- Bento Card 3: Pengambilan Unit -->
-                <div onclick="selectCategory('pengambilan_unit')" id="catCardUnit" class="cursor-pointer glass-card p-6 rounded-3xl border border-slate-700 cat-card-inactive transition-all duration-300 relative overflow-hidden group">
-                    <div class="cat-icon-bg absolute top-0 right-0 w-20 h-20 bg-slate-800/40 rounded-bl-full flex items-top justify-end p-3 text-slate-400 transition-transform group-hover:scale-110">
-                        <i class="fa-solid fa-car-side text-2xl"></i>
+                <div onclick="selectCategory('pengambilan_unit')" id="catCardUnit" class="cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border border-slate-700 cat-card-inactive transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]">
+                    <div>
+                        <div class="cat-icon-bg absolute top-2 right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-slate-800/40 rounded-bl-full flex items-top justify-end p-2.5 sm:p-3 text-slate-400 transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-car-side text-xl sm:text-2xl"></i>
+                        </div>
+                        <span class="cat-badge text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-slate-300 bg-slate-900 px-2.5 py-0.5 sm:py-1 rounded-lg border border-slate-700 inline-block">Kategori 3</span>
+                        <h3 class="cat-title font-extrabold text-lg sm:text-xl text-white mt-3 sm:mt-4">3. Form Pengambilan Unit</h3>
+                        <p class="cat-desc text-xs text-slate-400 mt-1.5 sm:mt-2 leading-relaxed">Serah terima pengeluaran unit mobil lelang dari pool penyimpanan Tribik.</p>
                     </div>
-                    <span class="cat-badge text-[11px] font-extrabold uppercase tracking-wider text-slate-300 bg-slate-900 px-3 py-1 rounded-lg border border-slate-700 inline-block">Kategori 3</span>
-                    <h3 class="cat-title font-extrabold text-xl text-white mt-4">3. Form Pengambilan Unit</h3>
-                    <p class="cat-desc text-xs text-slate-400 mt-2 leading-relaxed">Serah terima pengeluaran unit mobil lelang dari pool penyimpanan Tribik.</p>
                 </div>
             </div>
 
@@ -377,80 +381,80 @@
                 <input type="hidden" id="selectedType" value="cek_unit">
 
                 <!-- Header Form Info -->
-                <div class="bg-gradient-to-r from-tribik-900 via-indigo-950 to-slate-900 p-6 sm:p-8 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-700/50">
+                <div class="bg-gradient-to-r from-tribik-900 via-indigo-950 to-slate-900 p-5 sm:p-8 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-700/50">
                     <div>
-                        <span id="typeBadge" class="bg-tribik-600/30 text-tribik-200 border border-tribik-500/40 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block">
+                        <span id="typeBadge" class="bg-tribik-600/30 text-tribik-200 border border-tribik-500/40 text-[11px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider inline-block">
                             Kategori: Cek Unit Lelang
                         </span>
-                        <h3 id="formTitleText" class="text-2xl font-black tracking-tight mt-3">Formulir Pengajuan Cek Unit Lelang Mobil</h3>
+                        <h3 id="formTitleText" class="text-xl sm:text-2xl font-black tracking-tight mt-2.5 sm:mt-3">Formulir Pengajuan Cek Unit Lelang Mobil</h3>
                         <p class="text-slate-300 text-xs mt-1">Isi seluruh parameter kolom di bawah ini. PDF Resmi akan terunduh & terkirim ke WhatsApp.</p>
                     </div>
-                    <div class="text-right text-xs bg-slate-950/60 p-4 rounded-2xl border border-white/10 backdrop-blur-md self-start md:self-auto">
+                    <div class="text-left md:text-right text-xs bg-slate-950/70 p-3.5 sm:p-4 rounded-2xl border border-white/10 backdrop-blur-md self-stretch md:self-auto flex md:block justify-between items-center">
                         <div class="font-mono text-slate-300">No. Dokumen: <span id="generatedDocNum" class="font-bold text-tribik-400">TRB-2026-0001</span></div>
-                        <div class="text-slate-400 mt-1">Tanggal: <span id="currentDateDisplay" class="text-slate-200">--/--/----</span></div>
+                        <div class="text-slate-400 md:mt-1">Tanggal: <span id="currentDateDisplay" class="text-slate-200">--/--/----</span></div>
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 space-y-8">
+                <div class="p-5 sm:p-8 space-y-6 sm:space-y-8">
 
                     <!-- DYNAMIC CATEGORY FORMS -->
                     <div id="dynamicFormContainer">
 
                         <!-- FORM 1: CEK UNIT -->
-                        <div id="fieldsCekUnit" class="space-y-6 form-section-animate">
-                            <h4 class="text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
-                                <span class="w-7 h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red">1</span>
+                        <div id="fieldsCekUnit" class="space-y-5 sm:space-y-6 form-section-animate">
+                            <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
+                                <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">1</span>
                                 Parameter Data Form Cek Unit Lelang Mobil
                             </h4>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                                 <div>
                                     <label for="cekNamaLengkap" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekNamaLengkap" placeholder="Contoh: Ahmad Subagja" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                                        <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="cekNamaLengkap" placeholder="Contoh: Ahmad Subagja" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="cekNikSimId" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">NIK / SIM / ID Karyawan <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-id-card absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekNikSimId" placeholder="3271xxxxxxxxxxxx / ID Karyawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono">
+                                        <i class="fa-solid fa-id-card absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="cekNikSimId" placeholder="3271xxxxxxxxxxxx / ID Karyawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="cekVendorPerusahaan" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nama Vendor / Perusahaan <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-building absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekVendorPerusahaan" placeholder="Contoh: PT. Lelang Otomotif Utama" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                                        <i class="fa-solid fa-building absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="cekVendorPerusahaan" placeholder="Contoh: PT. Lelang Otomotif Utama" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="cekNoPolisi" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nomor Polisi <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-car absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekNoPolisi" placeholder="Contoh: B 9812 TBK" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-bold uppercase tracking-wider text-tribik-400">
+                                        <i class="fa-solid fa-car absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="cekNoPolisi" placeholder="Contoh: B 9812 TBK" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-bold uppercase tracking-wider text-tribik-400 min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div class="md:col-span-2">
                                     <label for="cekNokaNosin" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Noka / Nosin (Nomor Rangka & Nomor Mesin) <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-barcode absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="cekNokaNosin" placeholder="Contoh: MHKS123456 / 2TR-7891011" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono">
+                                        <i class="fa-solid fa-barcode absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="cekNokaNosin" placeholder="Contoh: MHKS123456 / 2TR-7891011" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
                                     </div>
                                 </div>
 
-                                <!-- Menu Upload Foto KTP / ID Card -->
+                                <!-- Upload Foto KTP / ID Card -->
                                 <div>
                                     <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Foto KTP / ID Card <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
                                         <input type="file" id="cekKtpFile" accept="image/*" onchange="handleKtpUpload(this, 'cekKtpPreview', 'cekKtpData', 'cekKtpFilename')" class="hidden">
-                                        <label for="cekKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-4 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500">
-                                            <span id="cekKtpFilename" class="truncate"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
+                                        <label for="cekKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-3.5 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500 min-h-[44px]">
+                                            <span id="cekKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
                                             <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih</span>
                                         </label>
                                         <input type="hidden" id="cekKtpData" value="">
@@ -466,44 +470,44 @@
                         </div>
 
                         <!-- FORM 2: PENGAMBILAN BARANG -->
-                        <div id="fieldsPengambilanBarang" class="hidden space-y-6">
-                            <h4 class="text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
-                                <span class="w-7 h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red">1</span>
+                        <div id="fieldsPengambilanBarang" class="hidden space-y-5 sm:space-y-6">
+                            <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
+                                <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">1</span>
                                 Parameter Data Form Pengambilan Barang Unit Lelang
                             </h4>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                                 <div>
                                     <label for="barangNamaLengkap" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="barangNamaLengkap" placeholder="Contoh: Budi Santoso" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                                        <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="barangNamaLengkap" placeholder="Contoh: Budi Santoso" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="barangNikSimId" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">NIK / SIM / ID Karyawan <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-id-card absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="barangNikSimId" placeholder="3271xxxxxxxxxxxx / ID Karyawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono">
+                                        <i class="fa-solid fa-id-card absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="barangNikSimId" placeholder="3271xxxxxxxxxxxx / ID Karyawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="barangVendorPerusahaan" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nama Vendor / Perusahaan <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-building absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="barangVendorPerusahaan" placeholder="Contoh: PT. Balai Lelang Indonesia" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                                        <i class="fa-solid fa-building absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="barangVendorPerusahaan" placeholder="Contoh: PT. Balai Lelang Indonesia" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                                     </div>
                                 </div>
 
-                                <!-- Menu Upload Foto KTP / ID Card -->
+                                <!-- Upload Foto KTP / ID Card -->
                                 <div>
                                     <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Foto KTP / ID Card <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
                                         <input type="file" id="barangKtpFile" accept="image/*" onchange="handleKtpUpload(this, 'barangKtpPreview', 'barangKtpData', 'barangKtpFilename')" class="hidden">
-                                        <label for="barangKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-4 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500">
-                                            <span id="barangKtpFilename" class="truncate"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
+                                        <label for="barangKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-3.5 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500 min-h-[44px]">
+                                            <span id="barangKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
                                             <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih</span>
                                         </label>
                                         <input type="hidden" id="barangKtpData" value="">
@@ -518,42 +522,42 @@
                             </div>
 
                             <!-- Detail Permintaan Pengambilan Barang Section -->
-                            <div class="bg-slate-900/70 p-6 rounded-2xl border border-slate-700/70 space-y-5">
-                                <div class="flex items-center justify-between">
+                            <div class="bg-slate-900/70 p-4 sm:p-6 rounded-2xl border border-slate-700/70 space-y-4 sm:space-y-5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                     <label class="block text-xs font-extrabold text-white uppercase tracking-wider">
                                         <i class="fa-solid fa-boxes-stacked mr-2 text-tribik-400"></i> Detail Permintaan Pengambilan Barang
                                     </label>
-                                    <span class="text-[11px] text-slate-400">Tambah/hapus baris barang sesuai kebutuhan</span>
+                                    <span class="text-[10px] sm:text-[11px] text-slate-400">Tambah/hapus baris barang sesuai kebutuhan</span>
                                 </div>
 
                                 <!-- Dynamic Items Table -->
                                 <div class="overflow-x-auto border border-slate-700/80 rounded-2xl bg-slate-950/80">
-                                    <table class="w-full text-left text-sm" id="itemsTable">
-                                        <thead class="bg-slate-900/90 text-slate-300 text-xs uppercase font-extrabold border-b border-slate-800">
+                                    <table class="w-full text-left text-sm min-w-[500px]" id="itemsTable">
+                                        <thead class="bg-slate-900/90 text-slate-300 text-[11px] uppercase font-extrabold border-b border-slate-800">
                                             <tr>
-                                                <th class="p-3.5">Nama / Rincian Barang</th>
-                                                <th class="p-3.5 w-32">Jumlah</th>
-                                                <th class="p-3.5 w-32">Satuan</th>
-                                                <th class="p-3.5">Keterangan / Peruntukan</th>
-                                                <th class="p-3.5 w-16 text-center">Aksi</th>
+                                                <th class="p-3">Nama / Rincian Barang</th>
+                                                <th class="p-3 w-28">Jumlah</th>
+                                                <th class="p-3 w-28">Satuan</th>
+                                                <th class="p-3">Keterangan / Peruntukan</th>
+                                                <th class="p-3 w-14 text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody id="itemsTableBody">
                                             <tr class="border-b border-slate-800/60">
-                                                <td class="p-2.5">
+                                                <td class="p-2">
                                                     <input type="text" class="item-name w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Contoh: Kunci Cadangan / Dongkrak / STNK">
                                                 </td>
-                                                <td class="p-2.5">
+                                                <td class="p-2">
                                                     <input type="text" class="item-qty w-full p-2.5 glass-input rounded-lg text-xs" placeholder="1" value="1">
                                                 </td>
-                                                <td class="p-2.5">
+                                                <td class="p-2">
                                                     <input type="text" class="item-unit w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Pcs / Set / Unit" value="Pcs">
                                                 </td>
-                                                <td class="p-2.5">
+                                                <td class="p-2">
                                                     <input type="text" class="item-note w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Atribut pendukung unit lelang">
                                                 </td>
-                                                <td class="p-2.5 text-center">
-                                                    <button type="button" onclick="removeRow(this)" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition" title="Hapus Baris">
+                                                <td class="p-2 text-center">
+                                                    <button type="button" onclick="removeRow(this)" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition min-h-[38px] min-w-[38px]" title="Hapus Baris">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </button>
                                                 </td>
@@ -562,72 +566,72 @@
                                     </table>
                                 </div>
 
-                                <button type="button" onclick="addItemRow()" class="px-5 py-2.5 bg-slate-900 hover:bg-tribik-900/50 text-tribik-300 font-bold text-xs rounded-xl border border-tribik-500/50 transition shadow-sm inline-flex items-center gap-2 transform active:scale-95">
+                                <button type="button" onclick="addItemRow()" class="px-4 sm:px-5 py-2.5 bg-slate-900 hover:bg-tribik-900/50 text-tribik-300 font-bold text-xs rounded-xl border border-tribik-500/50 transition shadow-sm inline-flex items-center gap-2 transform active:scale-95 min-h-[44px]">
                                     <i class="fa-solid fa-plus-circle text-sm"></i> Tambah Item Barang
                                 </button>
                             </div>
 
                             <div>
                                 <label for="barangCatatan" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Catatan <span class="text-tribik-400">*</span></label>
-                                <textarea id="barangCatatan" rows="3" placeholder="Tuliskan catatan tambahan mengenai pengambilan barang unit lelang di sini..." class="w-full p-4 glass-input rounded-xl text-sm"></textarea>
+                                <textarea id="barangCatatan" rows="3" placeholder="Tuliskan catatan tambahan mengenai pengambilan barang unit lelang di sini..." class="w-full p-3.5 sm:p-4 glass-input rounded-xl text-sm"></textarea>
                             </div>
                         </div>
 
                         <!-- FORM 3: PENGAMBILAN UNIT -->
-                        <div id="fieldsPengambilanUnit" class="hidden space-y-6">
-                            <h4 class="text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
-                                <span class="w-7 h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red">1</span>
+                        <div id="fieldsPengambilanUnit" class="hidden space-y-5 sm:space-y-6">
+                            <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3">
+                                <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">1</span>
                                 Parameter Data Form Pengambilan Unit Lelang Mobil
                             </h4>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                                 <div>
                                     <label for="unitNamaLengkap" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitNamaLengkap" placeholder="Contoh: Deni Kurniawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                                        <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="unitNamaLengkap" placeholder="Contoh: Deni Kurniawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="unitNikSimId" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">NIK / SIM / ID Karyawan <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-id-card absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitNikSimId" placeholder="3271xxxxxxxxxxxx / ID Karyawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono">
+                                        <i class="fa-solid fa-id-card absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="unitNikSimId" placeholder="3271xxxxxxxxxxxx / ID Karyawan" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="unitVendorPerusahaan" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nama Vendor / Perusahaan <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-building absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitVendorPerusahaan" placeholder="Contoh: PT. Fleet Lelang Mobil" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                                        <i class="fa-solid fa-building absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="unitVendorPerusahaan" placeholder="Contoh: PT. Fleet Lelang Mobil" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="unitNoPolisi" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nomor Polisi <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-car absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitNoPolisi" placeholder="Contoh: B 7788 TRB" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-bold uppercase tracking-wider text-tribik-400">
+                                        <i class="fa-solid fa-car absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="unitNoPolisi" placeholder="Contoh: B 7788 TRB" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-bold uppercase tracking-wider text-tribik-400 min-h-[44px]">
                                     </div>
                                 </div>
 
                                 <div class="md:col-span-2">
                                     <label for="unitNokaNosin" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Noka / Nosin (Nomor Rangka & Nomor Mesin) <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
-                                        <i class="fa-solid fa-barcode absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                                        <input type="text" id="unitNokaNosin" placeholder="Contoh: MHKS889910 / 1NR-554432" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono">
+                                        <i class="fa-solid fa-barcode absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                        <input type="text" id="unitNokaNosin" placeholder="Contoh: MHKS889910 / 1NR-554432" class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm font-mono min-h-[44px]">
                                     </div>
                                 </div>
 
-                                <!-- Menu Upload Foto KTP / ID Card -->
+                                <!-- Upload Foto KTP / ID Card -->
                                 <div>
                                     <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Foto KTP / ID Card <span class="text-tribik-400">*</span></label>
                                     <div class="relative">
                                         <input type="file" id="unitKtpFile" accept="image/*" onchange="handleKtpUpload(this, 'unitKtpPreview', 'unitKtpData', 'unitKtpFilename')" class="hidden">
-                                        <label for="unitKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-4 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500">
-                                            <span id="unitKtpFilename" class="truncate"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
+                                        <label for="unitKtpFile" class="w-full cursor-pointer glass-input rounded-xl px-3.5 py-3 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-between border border-dashed border-slate-600 hover:border-tribik-500 min-h-[44px]">
+                                            <span id="unitKtpFilename" class="truncate max-w-[200px]"><i class="fa-solid fa-id-card text-tribik-400 mr-2"></i> Upload Foto KTP / ID Card...</span>
                                             <span class="px-2.5 py-1 bg-tribik-600/30 text-tribik-300 rounded-lg text-[10px] font-bold uppercase shrink-0">Pilih</span>
                                         </label>
                                         <input type="hidden" id="unitKtpData" value="">
@@ -645,15 +649,15 @@
                     </div>
 
                     <!-- SECTION 2: Catatan Umum & Tanda Tangan Digital -->
-                    <div class="border-t border-slate-700/80 pt-6">
-                        <h4 class="text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3 mb-6">
-                            <span class="w-7 h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red">2</span>
+                    <div class="border-t border-slate-700/80 pt-5 sm:pt-6">
+                        <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2.5 border-b border-slate-700/80 pb-3 mb-5 sm:mb-6">
+                            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-tribik-600 text-white text-xs flex items-center justify-center font-black shadow-glow-red shrink-0">2</span>
                             Verifikasi & Tanda Tangan Digital
                         </h4>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                             <div>
-                                <div class="bg-amber-500/10 border border-amber-500/30 p-5 rounded-2xl text-xs text-amber-200 space-y-2.5 backdrop-blur-md">
+                                <div class="bg-amber-500/10 border border-amber-500/30 p-4 sm:p-5 rounded-2xl text-xs text-amber-200 space-y-2 backdrop-blur-md">
                                     <div class="font-bold flex items-center gap-2 text-amber-400 text-sm">
                                         <i class="fa-solid fa-circle-info"></i> Ketentuan Balai Lelang Tribik:
                                     </div>
@@ -677,16 +681,16 @@
                     </div>
 
                     <!-- Submission Action Buttons -->
-                    <div class="border-t border-slate-700/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <button type="button" onclick="resetForm()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition active:scale-95">
+                    <div class="border-t border-slate-700/80 pt-5 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4">
+                        <button type="button" onclick="resetForm()" class="w-full sm:w-auto px-5 py-3 sm:py-3.5 rounded-xl border border-slate-700 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition active:scale-95 min-h-[44px]">
                             <i class="fa-solid fa-arrow-rotate-left mr-2"></i> Reset Form
                         </button>
-                        <div class="flex w-full sm:w-auto gap-3">
-                            <button type="button" onclick="saveDraft()" class="w-1/2 sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800 text-slate-200 font-semibold text-sm hover:bg-slate-700 border border-slate-700 transition active:scale-95">
+                        <div class="flex w-full sm:w-auto gap-2.5 sm:gap-3">
+                            <button type="button" onclick="saveDraft()" class="w-1/2 sm:w-auto px-5 py-3 sm:py-3.5 rounded-xl bg-slate-800 text-slate-200 font-semibold text-sm hover:bg-slate-700 border border-slate-700 transition active:scale-95 min-h-[44px]">
                                 <i class="fa-solid fa-bookmark mr-2"></i> Simpan Draft
                             </button>
-                            <button type="submit" class="w-1/2 sm:w-auto px-8 py-3.5 rounded-xl bg-tribik-600 hover:bg-tribik-700 text-white font-extrabold text-sm shadow-glow-red transition transform active:scale-95 flex items-center justify-center gap-2.5 border border-tribik-500/50">
-                                <i class="fa-brands fa-whatsapp text-xl text-emerald-400"></i> Kirim Form PDF via WhatsApp
+                            <button type="submit" class="w-1/2 sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-tribik-600 hover:bg-tribik-700 text-white font-extrabold text-xs sm:text-sm shadow-glow-red transition transform active:scale-95 flex items-center justify-center gap-2 border border-tribik-500/50 min-h-[44px]">
+                                <i class="fa-brands fa-whatsapp text-lg sm:text-xl text-emerald-400"></i> Kirim Form PDF via WhatsApp
                             </button>
                         </div>
                     </div>
@@ -697,24 +701,24 @@
 
         <!-- ==================== TAB 2: DAFTAR PENGAJUAN ==================== -->
         <section id="tabHistorySection" class="hidden space-y-6">
-            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700/70 shadow-glass">
+            <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-700/70 shadow-glass">
                 
                 <!-- Table Filters & Clear Action -->
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-3.5 sm:gap-4 mb-6">
                     <div class="w-full md:w-96 relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-                        <input type="text" id="searchInput" onkeyup="filterRecords()" placeholder="Cari Nama, NIK/SIM, No. Polisi, Noka/Nosin..." class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="searchInput" onkeyup="filterRecords()" placeholder="Cari Nama, NIK/SIM, No. Polisi, Noka/Nosin..." class="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-sm min-h-[44px]">
                     </div>
 
-                    <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
-                        <select id="filterType" onchange="filterRecords()" class="glass-input text-slate-200 text-sm rounded-xl px-4 py-3">
+                    <div class="flex items-center gap-2.5 sm:gap-3 w-full md:w-auto justify-between md:justify-end">
+                        <select id="filterType" onchange="filterRecords()" class="glass-input text-slate-200 text-xs sm:text-sm rounded-xl px-3.5 py-3 min-h-[44px]">
                             <option value="ALL" class="bg-slate-900">Semua Jenis Form</option>
                             <option value="Cek Unit" class="bg-slate-900">Cek Unit</option>
                             <option value="Pengambilan Barang" class="bg-slate-900">Pengambilan Barang</option>
                             <option value="Pengambilan Unit" class="bg-slate-900">Pengambilan Unit</option>
                         </select>
 
-                        <button onclick="clearAllHistory()" class="px-4 py-3 bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 rounded-xl border border-rose-500/30 text-xs font-bold transition flex items-center gap-2 active:scale-95" title="Hapus Seluruh Riwayat Lokal">
+                        <button onclick="clearAllHistory()" class="px-3.5 py-3 bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 rounded-xl border border-rose-500/30 text-xs font-bold transition flex items-center gap-2 active:scale-95 min-h-[44px]" title="Hapus Seluruh Riwayat Lokal">
                             <i class="fa-solid fa-trash-arrow-up"></i> Bersihkan Riwayat
                         </button>
                     </div>
@@ -722,15 +726,15 @@
 
                 <!-- Table Content -->
                 <div class="overflow-x-auto rounded-2xl border border-slate-700/80">
-                    <table class="w-full text-left text-sm">
-                        <thead class="bg-slate-900/90 text-slate-300 uppercase text-xs font-extrabold border-b border-slate-800">
+                    <table class="w-full text-left text-sm min-w-[640px]">
+                        <thead class="bg-slate-900/90 text-slate-300 uppercase text-[11px] font-extrabold border-b border-slate-800">
                             <tr>
-                                <th class="p-4">No. Dokumen</th>
-                                <th class="p-4">Tanggal</th>
-                                <th class="p-4">Kategori Form</th>
-                                <th class="p-4">Pemohon & Vendor</th>
-                                <th class="p-4">Identitas (NIK/Polisi/Noka)</th>
-                                <th class="p-4 text-center">Aksi</th>
+                                <th class="p-3.5">No. Dokumen</th>
+                                <th class="p-3.5">Tanggal</th>
+                                <th class="p-3.5">Kategori Form</th>
+                                <th class="p-3.5">Pemohon & Vendor</th>
+                                <th class="p-3.5">Identitas (NIK/Polisi/Noka)</th>
+                                <th class="p-3.5 text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="historyTableBody" class="divide-y divide-slate-800/60 bg-slate-900/40">
@@ -739,9 +743,9 @@
                     </table>
                 </div>
 
-                <div id="emptyHistoryState" class="hidden text-center py-16">
-                    <i class="fa-solid fa-folder-open text-5xl text-slate-600 mb-4"></i>
-                    <p class="text-slate-300 font-semibold text-sm">Belum ada pengajuan tersimpan. Silakan buat form pengajuan baru.</p>
+                <div id="emptyHistoryState" class="hidden text-center py-12 sm:py-16">
+                    <i class="fa-solid fa-folder-open text-4xl sm:text-5xl text-slate-600 mb-3 sm:mb-4"></i>
+                    <p class="text-slate-300 font-semibold text-xs sm:text-sm">Belum ada pengajuan tersimpan. Silakan buat form pengajuan baru.</p>
                 </div>
             </div>
         </section>
@@ -749,63 +753,63 @@
         <!-- ==================== TAB 3: DASHBOARD STATISTIK ==================== -->
         <section id="tabDashboardSection" class="hidden space-y-6">
             <!-- Stats Cards Grid (Bento Style) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="glass-card p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+                <div class="glass-card p-5 sm:p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
                     <div>
                         <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Total Pengajuan</p>
-                        <h3 id="statTotal" class="text-3xl font-black text-white mt-1">0</h3>
+                        <h3 id="statTotal" class="text-2xl sm:text-3xl font-black text-white mt-1">0</h3>
                     </div>
-                    <div class="w-14 h-14 bg-tribik-600/20 text-tribik-400 rounded-2xl flex items-center justify-center text-2xl border border-tribik-500/30">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-tribik-600/20 text-tribik-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl border border-tribik-500/30">
                         <i class="fa-solid fa-file-lines"></i>
                     </div>
                 </div>
 
-                <div class="glass-card p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
+                <div class="glass-card p-5 sm:p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
                     <div>
                         <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Form Cek Unit</p>
-                        <h3 id="statCekUnit" class="text-3xl font-black text-white mt-1">0</h3>
+                        <h3 id="statCekUnit" class="text-2xl sm:text-3xl font-black text-white mt-1">0</h3>
                     </div>
-                    <div class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-2xl border border-blue-500/30">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl border border-blue-500/30">
                         <i class="fa-solid fa-magnifying-glass-chart"></i>
                     </div>
                 </div>
 
-                <div class="glass-card p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
+                <div class="glass-card p-5 sm:p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
                     <div>
                         <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Pengambilan Barang</p>
-                        <h3 id="statBarang" class="text-3xl font-black text-white mt-1">0</h3>
+                        <h3 id="statBarang" class="text-2xl sm:text-3xl font-black text-white mt-1">0</h3>
                     </div>
-                    <div class="w-14 h-14 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-2xl border border-amber-500/30">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl border border-amber-500/30">
                         <i class="fa-solid fa-boxes-packing"></i>
                     </div>
                 </div>
 
-                <div class="glass-card p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
+                <div class="glass-card p-5 sm:p-6 rounded-3xl border border-slate-700/70 shadow-glass flex items-center justify-between">
                     <div>
                         <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Pengambilan Unit</p>
-                        <h3 id="statPengambilanUnit" class="text-3xl font-black text-white mt-1">0</h3>
+                        <h3 id="statPengambilanUnit" class="text-2xl sm:text-3xl font-black text-white mt-1">0</h3>
                     </div>
-                    <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl border border-emerald-500/30">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl border border-emerald-500/30">
                         <i class="fa-solid fa-car-side"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Visual Info Card -->
-            <div class="glass-card rounded-3xl border border-slate-700/70 p-6 sm:p-8 shadow-glass">
-                <h3 class="font-extrabold text-white text-lg mb-5 flex items-center gap-2.5">
+            <div class="glass-card rounded-3xl border border-slate-700/70 p-5 sm:p-8 shadow-glass">
+                <h3 class="font-extrabold text-white text-base sm:text-lg mb-4 sm:mb-5 flex items-center gap-2.5">
                     <i class="fa-solid fa-gavel text-tribik-400"></i> Panduan Prosedur Balai Lelang Tribik
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                    <div class="bg-slate-900/70 p-5 rounded-2xl border border-slate-700/80">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-sm">
+                    <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-700/80">
                         <div class="font-bold text-tribik-400 mb-2 text-sm">1. Form Cek Unit Lelang</div>
                         <p class="text-slate-300 text-xs leading-relaxed">Isi data Nama Lengkap, NIK/SIM/ID Karyawan, Nama Vendor, Nomor Polisi, serta Noka/Nosin untuk verifikasi inspeksi kelayakan fisik kendaraan lelang.</p>
                     </div>
-                    <div class="bg-slate-900/70 p-5 rounded-2xl border border-slate-700/80">
+                    <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-700/80">
                         <div class="font-bold text-tribik-400 mb-2 text-sm">2. Form Pengambilan Barang</div>
                         <p class="text-slate-300 text-xs leading-relaxed">Gunakan tombol "+ Tambah Item Barang" untuk memasukkan rincian perlengkapan/suku cadang unit lelang secara dinamis.</p>
                     </div>
-                    <div class="bg-slate-900/70 p-5 rounded-2xl border border-slate-700/80">
+                    <div class="bg-slate-900/70 p-4 sm:p-5 rounded-2xl border border-slate-700/80">
                         <div class="font-bold text-tribik-400 mb-2 text-sm">3. Form Pengambilan Unit</div>
                         <p class="text-slate-300 text-xs leading-relaxed">Izin serah terima pengeluaran unit kendaraan lelang dengan verifikasi identitas pengambil, Nomor Polisi, dan Noka/Nosin kendaraan.</p>
                     </div>
@@ -818,44 +822,44 @@
     <!-- MODAL DETAIL / PRINT RECEIPT -->
     <div id="detailModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-xl z-50 hidden flex items-center justify-center p-3 sm:p-5">
         <div class="glass-card rounded-3xl max-w-2xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-slate-700 flex flex-col justify-between transform transition-all duration-300">
-            <div id="printableReceipt" class="p-6 sm:p-8 space-y-6">
+            <div id="printableReceipt" class="p-5 sm:p-8 space-y-5 sm:space-y-6">
                 <!-- Modal Header Official -->
-                <div class="border-b border-slate-700/80 pb-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div class="flex items-center gap-3.5">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-tribik-600 to-indigo-700 text-white flex items-center justify-center font-black text-xl shadow-glow-red border border-tribik-400/40 flex-shrink-0">
+                <div class="border-b border-slate-700/80 pb-4 sm:pb-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-tribik-600 to-indigo-700 text-white flex items-center justify-center font-black text-lg sm:text-xl shadow-glow-red border border-tribik-400/40 shrink-0">
                             <i class="fa-solid fa-car-side"></i>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h2 class="text-xl font-black text-white tracking-tight">Tribik Form</h2>
-                                <span class="text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-tribik-600/30 text-tribik-300 border border-tribik-500/40">
+                                <h2 class="text-lg sm:text-xl font-black text-white tracking-tight">Tribik Form</h2>
+                                <span class="text-[9px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full bg-tribik-600/30 text-tribik-300 border border-tribik-500/40">
                                     Lelang
                                 </span>
                             </div>
-                            <p class="text-xs text-slate-300 font-medium mt-0.5">Balai Lelang Tribik – Portal Pengajuan</p>
+                            <p class="text-[11px] sm:text-xs text-slate-300 font-medium mt-0.5">Balai Lelang Tribik – Portal Pengajuan</p>
                         </div>
                     </div>
-                    <div class="text-left sm:text-right bg-slate-900/80 px-4 py-2 rounded-2xl border border-slate-700/80 self-stretch sm:self-auto flex sm:block justify-between items-center">
-                        <span id="modalDocNum" class="font-mono text-sm font-extrabold text-tribik-400 tracking-wider">TRB-2026-0001</span>
-                        <div id="modalDate" class="text-[11px] font-semibold text-slate-300 sm:mt-0.5">--/--/----</div>
+                    <div class="text-left sm:text-right bg-slate-900/80 px-3.5 py-2 rounded-2xl border border-slate-700/80 self-stretch sm:self-auto flex sm:block justify-between items-center">
+                        <span id="modalDocNum" class="font-mono text-xs sm:text-sm font-extrabold text-tribik-400 tracking-wider">TRB-2026-0001</span>
+                        <div id="modalDate" class="text-[10px] sm:text-[11px] font-semibold text-slate-300 sm:mt-0.5">--/--/----</div>
                     </div>
                 </div>
 
                 <!-- Content Rendered Dynamically by JS -->
-                <div id="modalContent" class="space-y-4 text-sm text-slate-200">
+                <div id="modalContent" class="space-y-4 text-xs sm:text-sm text-slate-200">
                     <!-- Dynamic details populated here -->
                 </div>
 
                 <!-- Signatures Display (Bento Style) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-700/80 text-center text-xs">
-                    <div class="bg-slate-900/70 p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-3.5 border-t border-slate-700/80 text-center text-xs">
+                    <div class="bg-slate-900/70 p-3.5 sm:p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between">
                         <p class="text-slate-300 uppercase font-bold text-[10px] tracking-wider mb-2">Pemohon / Pengaju</p>
                         <div id="modalSignatureContainer" class="h-16 my-1 flex items-center justify-center">
                             <!-- Canvas image rendered here -->
                         </div>
                         <p id="modalApplicantName" class="font-bold text-white text-xs border-t border-slate-800 pt-2 mt-1">------------------</p>
                     </div>
-                    <div class="bg-slate-900/70 p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between">
+                    <div class="bg-slate-900/70 p-3.5 sm:p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between">
                         <p class="text-slate-300 uppercase font-bold text-[10px] tracking-wider mb-2">Pengawas / Disetujui Oleh</p>
                         <div class="h-16 my-1 flex items-center justify-center text-emerald-400 font-bold text-xs italic bg-emerald-500/10 rounded-xl border border-emerald-500/20 px-3">
                             <i class="fa-solid fa-circle-check mr-2"></i> [ Terverifikasi Sistem Lelang ]
@@ -866,15 +870,15 @@
             </div>
 
             <!-- Modal Action Bar -->
-            <div class="bg-slate-950/90 px-6 py-4 rounded-b-3xl border-t border-slate-700/80 flex flex-wrap sm:flex-nowrap justify-between items-center gap-3 no-print">
-                <button onclick="closeModal()" class="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs rounded-xl transition border border-slate-700 active:scale-95">
+            <div class="bg-slate-950/90 px-4 sm:px-6 py-3.5 sm:py-4 rounded-b-3xl border-t border-slate-700/80 flex flex-col sm:flex-row justify-between items-center gap-2.5 sm:gap-3 no-print">
+                <button onclick="closeModal()" class="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs rounded-xl transition border border-slate-700 active:scale-95 min-h-[44px]">
                     Tutup
                 </button>
-                <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full sm:w-auto justify-end">
-                    <button id="modalDownloadPdfBtn" class="flex-1 sm:flex-none px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl border border-slate-700 shadow transition flex items-center justify-center gap-2 active:scale-95">
+                <div class="flex gap-2 w-full sm:w-auto justify-end">
+                    <button id="modalDownloadPdfBtn" class="flex-1 sm:flex-none px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl border border-slate-700 shadow transition flex items-center justify-center gap-2 active:scale-95 min-h-[44px]">
                         <i class="fa-solid fa-file-pdf text-rose-400"></i> Unduh PDF
                     </button>
-                    <button onclick="playSound('click'); window.print();" class="flex-1 sm:flex-none px-5 py-2.5 bg-tribik-600 hover:bg-tribik-700 text-white font-extrabold text-xs rounded-xl shadow-glow-red transition flex items-center justify-center gap-2 border border-tribik-500/50 active:scale-95">
+                    <button onclick="playSound('click'); window.print();" class="flex-1 sm:flex-none px-5 py-2.5 bg-tribik-600 hover:bg-tribik-700 text-white font-extrabold text-xs rounded-xl shadow-glow-red transition flex items-center justify-center gap-2 border border-tribik-500/50 active:scale-95 min-h-[44px]">
                         <i class="fa-solid fa-print"></i> Cetak
                     </button>
                 </div>
@@ -883,13 +887,13 @@
     </div>
 
     <!-- Custom Toast Message Notification -->
-    <div id="toastNotification" class="fixed bottom-6 right-6 bg-slate-900/95 text-white px-6 py-4 rounded-2xl shadow-2xl border border-slate-700 backdrop-blur-xl flex items-center gap-3.5 transition-all duration-300 transform translate-y-28 opacity-0 z-50">
-        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+    <div id="toastNotification" class="fixed bottom-5 right-5 left-5 sm:left-auto sm:max-w-md bg-slate-900/95 text-white px-5 py-3.5 sm:px-6 sm:py-4 rounded-2xl shadow-2xl border border-slate-700 backdrop-blur-xl flex items-center gap-3.5 transition-all duration-300 transform translate-y-28 opacity-0 z-50">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-xl shrink-0"></i>
         <span id="toastMessage" class="text-xs font-semibold">Pesan notifikasi</span>
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 py-8 mt-16 text-center text-xs text-slate-400">
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 sm:py-8 mt-12 sm:mt-16 text-center text-xs text-slate-400">
         <div class="max-w-7xl mx-auto px-4">
             <p class="font-medium text-slate-300">2026 © Nunu Tribik. All Rights Reserved.</p>
             <p class="text-slate-400 mt-1">Sistem Operasional Pengajuan Cek Unit, Pengambilan Barang & Pengambilan Unit Lelang Mobil</p>
@@ -986,15 +990,15 @@
             const mobileIcon = document.getElementById('mobileSoundIcon');
 
             if (soundEnabled) {
-                label.innerText = 'Suara: ON';
-                icon.className = 'fa-solid fa-volume-high text-amber-400';
-                mobileIcon.className = 'fa-solid fa-volume-high text-sm';
+                if (label) label.innerText = 'Suara: ON';
+                if (icon) icon.className = 'fa-solid fa-volume-high text-amber-400';
+                if (mobileIcon) mobileIcon.className = 'fa-solid fa-volume-high text-sm';
                 playSound('click');
                 showToast('Suara aktivitas diaktifkan', 'info');
             } else {
-                label.innerText = 'Suara: OFF';
-                icon.className = 'fa-solid fa-volume-xmark text-slate-500';
-                mobileIcon.className = 'fa-solid fa-volume-xmark text-sm';
+                if (label) label.innerText = 'Suara: OFF';
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-slate-500';
+                if (mobileIcon) mobileIcon.className = 'fa-solid fa-volume-xmark text-sm';
                 showToast('Suara aktivitas dinonaktifkan', 'info');
             }
         }
@@ -1015,7 +1019,8 @@
 
             const today = new Date();
             const formattedDate = today.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
-            document.getElementById('currentDateDisplay').innerText = formattedDate;
+            const dateDisplay = document.getElementById('currentDateDisplay');
+            if (dateDisplay) dateDisplay.innerText = formattedDate;
 
             loadHistoryFromStorage();
             generateDocumentNumber();
@@ -1068,12 +1073,14 @@
 
         function updateClock() {
             const now = new Date();
-            document.getElementById('liveClock').innerText = now.toLocaleTimeString('id-ID');
+            const clockEl = document.getElementById('liveClock');
+            if (clockEl) clockEl.innerText = now.toLocaleTimeString('id-ID');
         }
 
         function generateDocumentNumber() {
             const randomSeq = Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('generatedDocNum').innerText = `TRB-2026-${randomSeq}`;
+            const docNumEl = document.getElementById('generatedDocNum');
+            if (docNumEl) docNumEl.innerText = `TRB-2026-${randomSeq}`;
         }
 
         function switchTab(tabName) {
@@ -1087,27 +1094,27 @@
             const btnHist = document.getElementById('tabBtnHistory');
             const btnDash = document.getElementById('tabBtnDashboard');
 
-            const inactiveClass = "px-4 sm:px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap";
-            const activeClass = "px-4 sm:px-5 py-2.5 rounded-xl font-bold transition-all duration-200 shadow-glow-red bg-tribik-600 text-white border border-tribik-500/50 whitespace-nowrap";
+            const inactiveClass = "px-4 sm:px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap min-h-[44px]";
+            const activeClass = "px-4 sm:px-5 py-2.5 rounded-xl font-bold transition-all duration-200 shadow-glow-red bg-tribik-600 text-white border border-tribik-500/50 whitespace-nowrap min-h-[44px]";
 
-            btnForm.className = inactiveClass;
-            btnHist.className = inactiveClass;
-            btnDash.className = inactiveClass;
+            if (btnForm) btnForm.className = inactiveClass;
+            if (btnHist) btnHist.className = inactiveClass;
+            if (btnDash) btnDash.className = inactiveClass;
 
-            formSec.classList.add('hidden');
-            histSec.classList.add('hidden');
-            dashSec.classList.add('hidden');
+            if (formSec) formSec.classList.add('hidden');
+            if (histSec) histSec.classList.add('hidden');
+            if (dashSec) dashSec.classList.add('hidden');
 
             if(tabName === 'form') {
-                formSec.classList.remove('hidden');
-                btnForm.className = activeClass;
+                if (formSec) formSec.classList.remove('hidden');
+                if (btnForm) btnForm.className = activeClass;
             } else if(tabName === 'history') {
-                histSec.classList.remove('hidden');
-                btnHist.className = activeClass;
+                if (histSec) histSec.classList.remove('hidden');
+                if (btnHist) btnHist.className = activeClass;
                 renderHistoryTable();
             } else if(tabName === 'dashboard') {
-                dashSec.classList.remove('hidden');
-                btnDash.className = activeClass;
+                if (dashSec) dashSec.classList.remove('hidden');
+                if (btnDash) btnDash.className = activeClass;
                 updateStats();
             }
         }
@@ -1115,12 +1122,13 @@
         function toggleMobileMenu() {
             playSound('click');
             const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            if (menu) menu.classList.toggle('hidden');
         }
 
         function selectCategory(category) {
             playSound('click');
-            document.getElementById('selectedType').value = category;
+            const selectedTypeInput = document.getElementById('selectedType');
+            if (selectedTypeInput) selectedTypeInput.value = category;
 
             const cardCek = document.getElementById('catCardCekUnit');
             const cardBarang = document.getElementById('catCardBarang');
@@ -1133,61 +1141,68 @@
             const badge = document.getElementById('typeBadge');
             const formTitle = document.getElementById('formTitleText');
 
-            const baseCardStyle = "cursor-pointer glass-card p-6 rounded-3xl border transition-all duration-300 relative overflow-hidden group";
+            const baseCardStyle = "cursor-pointer glass-card p-5 sm:p-6 rounded-3xl border transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[160px]";
 
-            fieldsCek.classList.remove('form-section-animate');
-            fieldsBarang.classList.remove('form-section-animate');
-            fieldsUnit.classList.remove('form-section-animate');
+            if (fieldsCek) fieldsCek.classList.remove('form-section-animate');
+            if (fieldsBarang) fieldsBarang.classList.remove('form-section-animate');
+            if (fieldsUnit) fieldsUnit.classList.remove('form-section-animate');
 
-            cardCek.className = `${baseCardStyle} ${category === 'cek_unit' ? 'cat-card-active' : 'cat-card-inactive'}`;
-            cardBarang.className = `${baseCardStyle} ${category === 'pengambilan_barang' ? 'cat-card-active' : 'cat-card-inactive'}`;
-            cardUnit.className = `${baseCardStyle} ${category === 'pengambilan_unit' ? 'cat-card-active' : 'cat-card-inactive'}`;
+            if (cardCek) cardCek.className = `${baseCardStyle} ${category === 'cek_unit' ? 'cat-card-active' : 'cat-card-inactive'}`;
+            if (cardBarang) cardBarang.className = `${baseCardStyle} ${category === 'pengambilan_barang' ? 'cat-card-active' : 'cat-card-inactive'}`;
+            if (cardUnit) cardUnit.className = `${baseCardStyle} ${category === 'pengambilan_unit' ? 'cat-card-active' : 'cat-card-inactive'}`;
 
-            fieldsCek.classList.add('hidden');
-            fieldsBarang.classList.add('hidden');
-            fieldsUnit.classList.add('hidden');
+            if (fieldsCek) fieldsCek.classList.add('hidden');
+            if (fieldsBarang) fieldsBarang.classList.add('hidden');
+            if (fieldsUnit) fieldsUnit.classList.add('hidden');
 
             if(category === 'cek_unit') {
-                fieldsCek.classList.remove('hidden');
-                void fieldsCek.offsetWidth;
-                fieldsCek.classList.add('form-section-animate');
-                badge.innerText = "Kategori: Cek Unit Lelang";
-                formTitle.innerText = "Formulir Pengajuan Cek Unit Lelang Mobil";
+                if (fieldsCek) {
+                    fieldsCek.classList.remove('hidden');
+                    void fieldsCek.offsetWidth;
+                    fieldsCek.classList.add('form-section-animate');
+                }
+                if (badge) badge.innerText = "Kategori: Cek Unit Lelang";
+                if (formTitle) formTitle.innerText = "Formulir Pengajuan Cek Unit Lelang Mobil";
             } else if(category === 'pengambilan_barang') {
-                fieldsBarang.classList.remove('hidden');
-                void fieldsBarang.offsetWidth;
-                fieldsBarang.classList.add('form-section-animate');
-                badge.innerText = "Kategori: Pengambilan Barang";
-                formTitle.innerText = "Formulir Pengajuan Pengambilan Barang Unit Lelang";
+                if (fieldsBarang) {
+                    fieldsBarang.classList.remove('hidden');
+                    void fieldsBarang.offsetWidth;
+                    fieldsBarang.classList.add('form-section-animate');
+                }
+                if (badge) badge.innerText = "Kategori: Pengambilan Barang";
+                if (formTitle) formTitle.innerText = "Formulir Pengajuan Pengambilan Barang Unit Lelang";
             } else if(category === 'pengambilan_unit') {
-                fieldsUnit.classList.remove('hidden');
-                void fieldsUnit.offsetWidth;
-                fieldsUnit.classList.add('form-section-animate');
-                badge.innerText = "Kategori: Pengambilan Unit";
-                formTitle.innerText = "Formulir Pengajuan Pengambilan Unit Lelang Mobil";
+                if (fieldsUnit) {
+                    fieldsUnit.classList.remove('hidden');
+                    void fieldsUnit.offsetWidth;
+                    fieldsUnit.classList.add('form-section-animate');
+                }
+                if (badge) badge.innerText = "Kategori: Pengambilan Unit";
+                if (formTitle) formTitle.innerText = "Formulir Pengajuan Pengambilan Unit Lelang Mobil";
             }
         }
 
         function addItemRow() {
             playSound('add');
             const tbody = document.getElementById('itemsTableBody');
+            if (!tbody) return;
             const tr = document.createElement('tr');
             tr.className = "border-b border-slate-800/60";
             tr.innerHTML = `
-                <td class="p-2.5">
+                <td class="p-2">
                     <input type="text" class="item-name w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Nama / Rincian Barang...">
                 </td>
-                <td class="p-2.5">
+                <td class="p-2">
                     <input type="text" class="item-qty w-full p-2.5 glass-input rounded-lg text-xs" value="1" placeholder="Jumlah">
                 </td>
-                <td class="p-2.5">
+                <td class="p-2">
                     <input type="text" class="item-unit w-full p-2.5 glass-input rounded-lg text-xs" value="Pcs" placeholder="Satuan">
                 </td>
-                <td class="p-2.5">
+                <td class="p-2">
                     <input type="text" class="item-note w-full p-2.5 glass-input rounded-lg text-xs" placeholder="Keterangan / Peruntukan...">
                 </td>
-                <td class="p-2.5 text-center">
-                    <button type="button" onclick="removeRow(this)" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition" title="Hapus Baris">
+                <td class="p-2 text-center">
+                    <button type="button" onclick="removeRow(this)" class="text-slate-400 hover:text-rose-400 p-2 rounded-lg transition min-h-[38px] min-w-[38px]" title="Hapus Baris">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </td>
@@ -1197,7 +1212,7 @@
 
         function removeRow(btn) {
             const tbody = document.getElementById('itemsTableBody');
-            if(tbody.rows.length > 1) {
+            if(tbody && tbody.rows.length > 1) {
                 playSound('delete');
                 btn.closest('tr').remove();
             } else {
@@ -1267,7 +1282,8 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64Data = e.target.result;
-                    document.getElementById(dataId).value = base64Data;
+                    const dataInput = document.getElementById(dataId);
+                    if (dataInput) dataInput.value = base64Data;
                     
                     const previewBox = document.getElementById(previewId);
                     if (previewBox) {
@@ -1331,15 +1347,15 @@
             const darkSlate = [15, 23, 42];
             const borderSlate = [226, 232, 240];
 
-            // 1. Top Modern Header Banner Container
+            // Header Container
             doc.setFillColor(darkSlate[0], darkSlate[1], darkSlate[2]);
             doc.roundedRect(12, 10, 186, 32, 4, 4, 'F');
 
-            // Left Crimson Accent Pillar
+            // Left Crimson Pillar
             doc.setFillColor(primaryRed[0], primaryRed[1], primaryRed[2]);
             doc.roundedRect(12, 10, 5, 32, 2, 2, 'F');
 
-            // Logo Badge matching webpage logo badge (Red Rounded Box with TRB)
+            // Logo Badge
             doc.setFillColor(primaryRed[0], primaryRed[1], primaryRed[2]);
             doc.roundedRect(22, 14, 14, 14, 3, 3, 'F');
             doc.setTextColor(255, 255, 255);
@@ -1347,7 +1363,7 @@
             doc.setFontSize(11);
             doc.text('TRB', 29, 23, { align: 'center' });
 
-            // Brand Title & Subtitle (Matching website header)
+            // Brand Title
             doc.setTextColor(255, 255, 255);
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(14);
@@ -1363,7 +1379,7 @@
             doc.setFont('helvetica', 'bold');
             doc.text('● DOKUMEN DIGITAL RESMI TERVERIFIKASI', 41, 33);
 
-            // Right Side Document ID Badge in Header
+            // Document ID Box
             doc.setFillColor(30, 41, 59);
             doc.roundedRect(142, 14, 52, 24, 3, 3, 'F');
             
@@ -1382,7 +1398,7 @@
             doc.setFont('helvetica', 'normal');
             doc.text(`TANGGAL: ${record.date || '--/--/----'}`, 146, 33);
 
-            // 2. Category Title Section Box
+            // Category Title Pill
             doc.setFillColor(255, 241, 242);
             doc.setDrawColor(254, 205, 211);
             doc.setLineWidth(0.3);
@@ -1393,7 +1409,7 @@
             doc.setFontSize(10);
             doc.text(`KATEGORI PENGAJUAN: ${(record.type || '').toUpperCase()}`, 16, 54.5);
 
-            // 3. Section 1: Data Pemohon
+            // Applicant Section
             const applicantBody = [
                 ['Nama Lengkap Pemohon', record.applicant || '-'],
                 ['NIK / SIM / ID Karyawan', record.nikSimId || '-'],
@@ -1430,7 +1446,7 @@
 
             let currentY = doc.lastAutoTable ? doc.lastAutoTable.finalY + 7 : 100;
 
-            // 4. Section 2: Detail Unit / Barang
+            // Details Section
             if (record.type === 'Cek Unit' || record.type === 'Pengambilan Unit') {
                 const unitBody = [
                     ['Nomor Polisi Unit', record.noPolisi || record.details?.noPolisi || '-'],
@@ -1525,7 +1541,7 @@
                 }
             }
 
-            // Render Foto KTP / ID Card in PDF Document
+            // KTP Photo Attachment in PDF
             if (record.ktpPhotoData) {
                 doc.setFillColor(248, 250, 252);
                 doc.setDrawColor(226, 232, 240);
@@ -1551,13 +1567,13 @@
                 currentY += 44;
             }
 
-            // 5. Verification & Digital Signatures Box
+            // Verification & Signatures Box
             doc.setFillColor(255, 255, 255);
             doc.setDrawColor(226, 232, 240);
             doc.setLineWidth(0.4);
             doc.roundedRect(12, currentY, 186, 52, 3, 3, 'S');
 
-            // Left Signature Box
+            // Left Signature
             doc.setFillColor(248, 250, 252);
             doc.roundedRect(16, currentY + 4, 86, 44, 2, 2, 'F');
 
@@ -1585,7 +1601,7 @@
             doc.setTextColor(15, 23, 42);
             doc.text(record.applicant || 'Pemohon Lelang', 20, currentY + 42);
 
-            // Right Verification Box
+            // Right Supervisor Verification
             doc.setFillColor(248, 250, 252);
             doc.roundedRect(108, currentY + 4, 86, 44, 2, 2, 'F');
 
@@ -1604,7 +1620,7 @@
             doc.text('✓ TERVERIFIKASI SISTEM LELANG', 116, currentY + 23);
             doc.setFontSize(6.5);
             doc.setFont('helvetica', 'normal');
-            doc.text(`Status: Valid | Operasional Tribik`, 116, currentY + 28);
+            doc.text('Status: Valid | Operasional Tribik', 116, currentY + 28);
 
             doc.setDrawColor(203, 213, 225);
             doc.line(112, currentY + 38, 186, currentY + 38);
@@ -1614,7 +1630,7 @@
             doc.setTextColor(15, 23, 42);
             doc.text('Supervisor Operasional Lelang', 112, currentY + 42);
 
-            // 6. Bottom Footer & Disclaimer
+            // Footer Page
             const pageHeight = doc.internal.pageSize.getHeight();
             
             doc.setDrawColor(primaryRed[0], primaryRed[1], primaryRed[2]);
@@ -1810,7 +1826,7 @@
             resetForm();
             switchTab('history');
 
-            // DIRECT REDIRECT TO KEKINIAN MODAL PREVIEW
+            // DIRECT REDIRECT TO MODAL PREVIEW RECEIPT
             viewDetail(0);
         }
 
@@ -1910,20 +1926,20 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-800/50 transition-colors";
                 tr.innerHTML = `
-                    <td class="p-4 font-mono text-xs font-bold text-tribik-400">${item.id}</td>
-                    <td class="p-4 text-xs text-slate-300">${item.date}</td>
-                    <td class="p-4">${catBadge}</td>
-                    <td class="p-4">
+                    <td class="p-3.5 font-mono text-xs font-bold text-tribik-400">${item.id}</td>
+                    <td class="p-3.5 text-xs text-slate-300">${item.date}</td>
+                    <td class="p-3.5">${catBadge}</td>
+                    <td class="p-3.5">
                         <div class="font-bold text-slate-100 text-xs">${item.applicant}</div>
                         <div class="text-[11px] text-slate-400 mt-0.5"><i class="fa-solid fa-building text-[10px] mr-1 text-slate-400"></i>${item.vendor || '-'}</div>
                     </td>
-                    <td class="p-4 text-xs text-slate-300">
+                    <td class="p-3.5 text-xs text-slate-300">
                         <div><strong class="text-slate-400">NIK/SIM:</strong> ${item.nikSimId}</div>
                         <div><strong class="text-tribik-400">Polisi:</strong> ${item.noPolisi}</div>
                         <div class="text-[11px] text-slate-400 font-mono"><strong>Noka:</strong> ${item.nokaNosin}</div>
                     </td>
-                    <td class="p-4 text-center">
-                        <button onclick="viewDetail(${index})" class="p-2.5 bg-slate-900 hover:bg-tribik-600 hover:text-white text-slate-200 rounded-xl text-xs font-semibold transition border border-slate-700 shadow-sm active:scale-95">
+                    <td class="p-3.5 text-center">
+                        <button onclick="viewDetail(${index})" class="p-2.5 bg-slate-900 hover:bg-tribik-600 hover:text-white text-slate-200 rounded-xl text-xs font-semibold transition border border-slate-700 shadow-sm active:scale-95 min-h-[38px]">
                             <i class="fa-solid fa-eye"></i> Detail / PDF
                         </button>
                     </td>
@@ -1964,9 +1980,13 @@
             const item = currentSubmissions[index];
             if(!item) return;
 
-            document.getElementById('modalDocNum').innerText = item.id;
-            document.getElementById('modalDate').innerText = item.date;
-            document.getElementById('modalApplicantName').innerText = item.applicant;
+            const modalDocNum = document.getElementById('modalDocNum');
+            const modalDate = document.getElementById('modalDate');
+            const modalApplicantName = document.getElementById('modalApplicantName');
+
+            if (modalDocNum) modalDocNum.innerText = item.id;
+            if (modalDate) modalDate.innerText = item.date;
+            if (modalApplicantName) modalApplicantName.innerText = item.applicant;
 
             const pdfBtn = document.getElementById('modalDownloadPdfBtn');
             if (pdfBtn) {
@@ -1980,12 +2000,12 @@
             const contentDiv = document.getElementById('modalContent');
             let html = `
                 <!-- Bento Data Pemohon Card -->
-                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-700/80 shadow-inner relative overflow-hidden">
+                <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-tribik-600/10 rounded-bl-full pointer-events-none"></div>
-                    <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-3 flex items-center gap-1.5">
+                    <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                         <i class="fa-solid fa-user-gear"></i> Informasi Pemohon Lelang
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80">
                             <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Kategori Form</span>
                             <strong class="text-tribik-400 text-sm font-extrabold mt-0.5 block">${item.type}</strong>
@@ -2009,12 +2029,12 @@
             if (item.ktpPhotoData) {
                 html += `
                     <!-- Bento Lampiran KTP / ID Card -->
-                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-700/80 shadow-inner">
-                        <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-3 flex items-center gap-1.5">
+                    <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner">
+                        <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                             <i class="fa-solid fa-id-card"></i> Lampiran Identitas (KTP / ID Card)
                         </div>
                         <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80 flex justify-center items-center">
-                            <img src="${item.ktpPhotoData}" class="max-h-48 rounded-lg object-contain border border-slate-800" alt="Foto KTP / ID Card">
+                            <img src="${item.ktpPhotoData}" class="max-h-40 sm:max-h-48 rounded-lg object-contain border border-slate-800" alt="Foto KTP / ID Card">
                         </div>
                     </div>
                 `;
@@ -2023,16 +2043,16 @@
             if(item.type === 'Cek Unit' || item.type === 'Pengambilan Unit') {
                 html += `
                     <!-- Bento Detail Unit Lelang Card -->
-                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-700/80 shadow-inner relative overflow-hidden">
-                        <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-3 flex items-center gap-1.5">
+                    <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner relative overflow-hidden">
+                        <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                             <i class="fa-solid fa-car"></i> Rincian Spesifikasi Unit Lelang Mobil
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs">
-                            <div class="bg-slate-950/70 p-3.5 rounded-xl border border-slate-700/80">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80">
                                 <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Nomor Polisi</span>
                                 <span class="text-tribik-400 font-extrabold text-base tracking-wider uppercase mt-0.5 block">${item.noPolisi || item.details?.noPolisi || '-'}</span>
                             </div>
-                            <div class="bg-slate-950/70 p-3.5 rounded-xl border border-slate-700/80">
+                            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-700/80">
                                 <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Noka / Nosin (Nomor Rangka & Mesin)</span>
                                 <span class="font-mono text-slate-200 text-xs font-semibold mt-1 block">${item.nokaNosin || item.details?.nokaNosin || '-'}</span>
                             </div>
@@ -2042,17 +2062,17 @@
             } else if(item.type === 'Pengambilan Barang') {
                 html += `
                     <!-- Bento Detail Barang Card -->
-                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-700/80 shadow-inner">
-                        <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-3 flex items-center gap-1.5">
+                    <div class="bg-slate-900/90 p-4 sm:p-5 rounded-2xl border border-slate-700/80 shadow-inner">
+                        <div class="text-[10px] font-extrabold uppercase tracking-widest text-tribik-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                             <i class="fa-solid fa-boxes-stacked"></i> Detail Permintaan Pengambilan Barang
                         </div>
                         <div class="overflow-x-auto rounded-xl border border-slate-700/80 bg-slate-950/80">
-                            <table class="w-full text-xs text-left border-collapse">
+                            <table class="w-full text-xs text-left border-collapse min-w-[360px]">
                                 <thead>
-                                    <tr class="bg-slate-900/90 font-bold border-b border-slate-800 text-slate-300 text-[11px]">
-                                        <th class="p-3">Rincian Barang</th>
-                                        <th class="p-3">Jumlah</th>
-                                        <th class="p-3">Keterangan / Peruntukan</th>
+                                    <tr class="bg-slate-900/90 font-bold border-b border-slate-800 text-slate-300 text-[10px] sm:text-[11px]">
+                                        <th class="p-2.5 sm:p-3">Rincian Barang</th>
+                                        <th class="p-2.5 sm:p-3">Jumlah</th>
+                                        <th class="p-2.5 sm:p-3">Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-800/60">
@@ -2061,9 +2081,9 @@
                     item.details.items.forEach(it => {
                         html += `
                             <tr>
-                                <td class="p-3 font-bold text-slate-100">${it.name}</td>
-                                <td class="p-3 text-tribik-400 font-bold">${it.qty} ${it.unit}</td>
-                                <td class="p-3 text-slate-300">${it.note || '-'}</td>
+                                <td class="p-2.5 sm:p-3 font-bold text-slate-100">${it.name}</td>
+                                <td class="p-2.5 sm:p-3 text-tribik-400 font-bold">${it.qty} ${it.unit}</td>
+                                <td class="p-2.5 sm:p-3 text-slate-300">${it.note || '-'}</td>
                             </tr>
                         `;
                     });
@@ -2076,7 +2096,7 @@
                 `;
                 if(item.details && item.details.catatan) {
                     html += `
-                        <div class="text-xs bg-slate-900/70 p-4 rounded-xl border border-slate-700/80">
+                        <div class="text-xs bg-slate-900/70 p-3.5 sm:p-4 rounded-xl border border-slate-700/80">
                             <span class="font-bold text-slate-400 block mb-1 text-[10px] uppercase tracking-wider">Catatan Tambahan:</span>
                             <p class="text-slate-200 italic">"${item.details.catatan}"</p>
                         </div>
@@ -2126,11 +2146,11 @@
             msgEl.innerText = message;
 
             if(type === 'success') {
-                iconEl.className = "fa-solid fa-circle-check text-emerald-400 text-xl";
+                iconEl.className = "fa-solid fa-circle-check text-emerald-400 text-xl shrink-0";
             } else if(type === 'warning') {
-                iconEl.className = "fa-solid fa-triangle-exclamation text-amber-400 text-xl";
+                iconEl.className = "fa-solid fa-triangle-exclamation text-amber-400 text-xl shrink-0";
             } else {
-                iconEl.className = "fa-solid fa-info-circle text-blue-400 text-xl";
+                iconEl.className = "fa-solid fa-info-circle text-blue-400 text-xl shrink-0";
             }
 
             toast.classList.remove('translate-y-28', 'opacity-0');
