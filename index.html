@@ -655,7 +655,7 @@
                                     <div class="font-bold flex items-center gap-2 text-amber-300 text-sm">
                                         <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Ketentuan Tribik Auction:
                                     </div>
-                                    <p class="leading-relaxed">1. Data yang diinputkan akan langsung di-generate menjadi <strong class="text-white">Dokumen PDF Resmi</strong>.</p>
+                                    <p class="leading-relaxed">1. Data yang diinputkan akan langsung di-generate menjadi <strong class="text-white">Dokumen PDF Resmi</strong> & tersimpan di Google Sheets.</p>
                                     <p class="leading-relaxed">2. Pengajuan akan diteruskan secara otomatis via WhatsApp ke nomor operasional: <strong class="text-emerald-400">08111454507</strong>.</p>
                                     <p class="leading-relaxed">3. Pastikan Nomor Polisi serta Merk/Type kendaraan terisi secara teliti.</p>
                                 </div>
@@ -995,7 +995,7 @@
         }
 
         const STORAGE_KEY = 'tribik_auction_form_submissions_v8';
-        const SHEETDB_API = 'https://sheetdb.io/api/v1/y00kbimzbd0kq';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwE91PyYGo53n0ixExMXeYIIBSxdTwfXOlJbG1uaKAKLNxKK_ZcZknqszCIG6j3dXQGWg/exec';
         let currentSubmissions = [];
 
         let signatureCanvas, signatureCtx;
@@ -1653,10 +1653,11 @@
             return null;
         }
 
-        function handleFormSubmit(event) {
+        async function handleFormSubmit(event) {
             event.preventDefault();
             const category = document.getElementById('selectedType').value;
 
+            // Validasi Isian
             const validationError = validateActiveCategory(category);
             if (validationError) {
                 playSound('warning');
@@ -1664,7 +1665,7 @@
                 return;
             }
 
-            if(!hasSignature) {
+            if (!hasSignature) {
                 playSound('warning');
                 showToast('Harap bubuhkan tanda tangan digital sebelum mengirim!', 'warning');
                 return;
@@ -1679,8 +1680,10 @@
             let ktpVal = "";
             let summaryPolisi = "";
             let summaryNoka = "";
+            let summaryCatatan = "";
 
-            if(category === 'cek_unit') {
+            // Ekstraksi Data Berdasarkan Kategori Form
+            if (category === 'cek_unit') {
                 typeTitle = "Cek Unit";
                 nameVal = document.getElementById('cekNamaLengkap').value;
                 nikVal = document.getElementById('cekNikSimId').value;
@@ -1700,15 +1703,15 @@
                 });
                 summaryPolisi = unitsList.map(u => u.noPolisi).join(', ');
                 summaryNoka = unitsList.map(u => u.nokaNosin).join(' | ');
-
                 extraData = { namaLengkap: nameVal, nikSimId: nikVal, vendor: vendorVal, units: unitsList };
-            } else if(category === 'pengambilan_barang') {
+
+            } else if (category === 'pengambilan_barang') {
                 typeTitle = "Pengambilan Barang";
                 nameVal = document.getElementById('barangNamaLengkap').value;
                 nikVal = document.getElementById('barangNikSimId').value;
                 vendorVal = document.getElementById('barangVendorPerusahaan').value;
                 summaryPolisi = "PENGAMBILAN BARANG";
-                summaryNoka = "LIHAT PDF / ATRIBUT";
+                summaryNoka = "LIHAT DETAIL / ATRIBUT";
                 ktpVal = document.getElementById('barangKtpData').value;
 
                 const names = document.querySelectorAll('.item-name');
@@ -1728,14 +1731,19 @@
                     }
                 });
 
+                summaryCatatan = itemsList.map(i => `${i.name} (${i.qty} ${i.unit})`).join(', ');
+                const catatanUser = document.getElementById('barangCatatan')?.value || '';
+                if (catatanUser) summaryCatatan += ` | Catatan: ${catatanUser}`;
+
                 extraData = {
                     namaLengkap: nameVal,
                     nikSimId: nikVal,
                     vendor: vendorVal,
                     items: itemsList,
-                    catatan: document.getElementById('barangCatatan')?.value || ''
+                    catatan: catatanUser
                 };
-            } else if(category === 'pengambilan_unit') {
+
+            } else if (category === 'pengambilan_unit') {
                 typeTitle = "Pengambilan Unit";
                 nameVal = document.getElementById('unitNamaLengkap').value;
                 nikVal = document.getElementById('unitNikSimId').value;
@@ -1755,7 +1763,6 @@
                 });
                 summaryPolisi = unitsList.map(u => u.noPolisi).join(', ');
                 summaryNoka = unitsList.map(u => u.nokaNosin).join(' | ');
-
                 extraData = { namaLengkap: nameVal, nikSimId: nikVal, vendor: vendorVal, units: unitsList };
             }
 
@@ -1776,47 +1783,48 @@
                 ktpPhotoData: ktpVal
             };
 
+            // 1. Simpan ke LocalStorage Sistem
             loadHistoryFromStorage();
             currentSubmissions.unshift(newRecord);
             saveHistoryToStorage();
 
-            const sheetDbPayload = {
-                data: [
-                    {
-                        "NO DOKUMEN": newRecord.id,
-                        "TANGGAL": newRecord.date,
-                        "KATEGORI": newRecord.type,
-                        "NAMA PEMOHON": newRecord.applicant,
-                        "NIK / SIM": newRecord.nikSimId,
-                        "VENDOR": newRecord.vendor,
-                        "NOPOL": newRecord.noPolisi,
-                        "NOKA / NOSIN": newRecord.nokaNosin,
-                        "LINK KTP": newRecord.ktpPhotoData ? "Terlampir di Sistem & PDF Resmi" : "-"
-                    }
-                ]
+            // 2. Kirim Data Langsung ke Google Sheets via Apps Script Web App
+            const sheetPayload = {
+                noDokumen: newRecord.id,
+                tanggal: newRecord.date,
+                kategori: newRecord.type,
+                namaPemohon: newRecord.applicant,
+                nikSim: newRecord.nikSimId,
+                perusahaan: newRecord.vendor,
+                nopol: newRecord.noPolisi,
+                nokaType: newRecord.nokaNosin,
+                catatanAtribut: summaryCatatan,
+                linkKtp: newRecord.ktpPhotoData ? "Terlampir di Sistem & PDF Resmi" : "-"
             };
 
-            fetch(SHEETDB_API, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(sheetDbPayload)
-            })
-            .then(res => res.json())
-            .then(resData => {
-                console.log("Berhasil masuk ke Google Sheets:", resData);
-            })
-            .catch(err => {
-                console.error("Gagal sinkronisasi ke SheetDB:", err);
-            });
+            showToast('Menyimpan data ke Google Sheets...', 'info');
 
+            try {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(sheetPayload)
+                });
+                console.log("Data berhasil dikirim ke Google Sheets.");
+            } catch (err) {
+                console.error("Gagal sinkronisasi Google Sheets:", err);
+            }
+
+            // 3. Generate & Unduh PDF
             playSound('submit');
             const generatedPdfName = generatePdfDocument(newRecord);
-            showToast('PDF Terunduh & Tersimpan di Database!', 'success');
+            showToast('PDF Terunduh & Tersimpan di Database Google Sheets!', 'success');
 
+            // 4. Buka WhatsApp untuk Mengirim Dokumen
             sendToWhatsApp(newRecord, generatedPdfName);
+            
+            // 5. Reset & Navigasi
             generateDocumentNumber();
             resetForm();
             switchTab('history');
